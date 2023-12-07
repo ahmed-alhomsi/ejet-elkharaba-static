@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio&family=Poppins&display=swap');
+
+:root {
+    --light-yellow: #ffd976;
+    --dark-yellow: #fcd108;
+    --dark-grey: #2e2e2c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Antonio', sans-serif; */
+}
+
+p, button, a {
+    font-family: 'Antonio', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Antonio', sans-serif;
+}
+
+ul {
+    list-style-type: none !important;
+}
+
+.header-inner {
+    background-color: var(--dark-grey) !important;
+}
+
+.scrolled {
+    background-color: var(--dark-yellow) !important;
+}
+
+.scrolled a {
+    color: var(--dark-grey) !important;
+}
+
+.scrolled .button {
+    background-color: var(--dark-grey);
+    color: #fff !important;
+}
+
+.scrolled a:hover {
+    border-bottom: solid 1px var(--dark-grey) !important;
+}
+
+nav a {
+    color: var(--dark-yellow) !important;
+}
+
+nav a:hover {
+    color: #fff !important;
+    border-bottom: solid 1px var(--dark-yellow) !important;
+}
+
+nav .button {
+    padding: 8px !important;
+    background-color: var(--dark-yellow);
+    color: var(--dark-grey) !important;
+    border-radius: 8px !important;
+    margin-left: 5px;
+}
+
+#dotsMenu {
+    height: 200px;
+}
+
+#dotsMenu a:hover {
+    background-color: var(--dark-yellow) !important;
+}
+/* 
+#dotsMenu a {
+    background-color: var(--dark-grey) !important;
+    color: #d3d3d334 !important;
+} */
+
+#dotsMenu li:hover {
+    background-color: var(--dark-yellow) !important;
+}
+
+#dotsMenu span {
+    font-size: 1.5em !important;
+}
