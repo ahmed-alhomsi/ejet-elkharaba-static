@@ -83,3 +83,41 @@ nav .button {
 #dotsMenu span {
     font-size: 1.5em !important;
 }
+
+/* .icon i{
+    width: 100px !important;
+    height: 100px !important;
+} */
+
+/* .people {
+    gap: 200px;
+} */
+
+.person {
+    border-radius: 10px !important;
+    position: relative;
+    /* padding: 20px; */
+}
+
+.person img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.person p {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    color: #fff;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+    background-color: #2e2e2c;
+}
+
+.person:hover p {
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
