@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Antonio&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 :root {
     --light-yellow: #ffd976;
@@ -84,6 +85,34 @@ nav .button {
     font-size: 1.5em !important;
 }
 
+.logo-white {
+    fill: #ffffff !important;
+}
+
+#scroll-down {
+    min-height: 60vh;
+}
+
+#scroll-arrow {
+    position: absolute;
+    top: 100%;
+}
+
+.realtime {
+    font-family: 'Dancing Script', cursive;
+    background-color: var(--light-yellow);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#phone {
+    /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1), 0 6px 200px rgba(0, 0, 0, 0.1); */
+}
+
+/* .line {
+    background-color: #fff !important;
+} */
+
 /* .icon i{
     width: 100px !important;
     height: 100px !important;
@@ -120,4 +149,25 @@ nav .button {
     opacity: 1;
     transition: 0.5s ease-in-out;
     cursor: pointer;
+}
+
+.user-stories {
+    /* margin: 10% !important; */
+}
+
+.yellow-section {
+    background-color: var(--dark-yellow) !important;
+}
+
+.dark-section {
+    background-color: var(--dark-grey) !important;
+}
+
+.dark-text {
+    color: var(--dark-grey) !important;
+}
+
+.dark-btn {
+    background-color: var(--dark-grey) !important;
+    border: 1px solid var(--dark-grey) !important;
 }
