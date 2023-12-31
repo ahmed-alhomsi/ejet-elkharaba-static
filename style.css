@@ -7,6 +7,10 @@
     --dark-grey: #2e2e2c;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -44,7 +48,7 @@ ul {
 }
 
 .scrolled a:hover {
-    border-bottom: solid 1px var(--dark-grey) !important;
+    /* border-bottom: solid 1px var(--dark-grey) !important; */
 }
 
 nav a {
@@ -53,7 +57,7 @@ nav a {
 
 nav a:hover {
     color: #fff !important;
-    border-bottom: solid 1px var(--dark-yellow) !important;
+    /* border-bottom: solid 1px var(--dark-yellow) !important; */
 }
 
 nav .button {
