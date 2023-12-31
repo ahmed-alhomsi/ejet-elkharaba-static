@@ -14,6 +14,71 @@
     <link href="css/plugins.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <style>
+        /* ---- reset ---- */
+        body {
+            margin: 0;
+            font: normal 75% Arial, Helvetica, sans-serif;
+        }
+
+        canvas {
+            display: block;
+            vertical-align: bottom;
+        }
+
+        /* ---- particles.js container ---- */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #2e2e2c;
+            background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAFFAjUDASIAAhEBAxEB/8QAHgABAAIBBQEBAAAAAAAAAAAAAAgJBwECBQYKBAP/xABZEAABAwMCAwQEBQ8IBggHAQABAAIDBAUGBxEIEiETMUFRCWFxgRQiMpGhFRYYIzZCUlZXdZSVsbPSFzdicrLB0/AkOIKSotEZMzVDU3N0wyUmVGOEk+HC/8QAHAEBAAEFAQEAAAAAAAAAAAAAAAECBAUGBwgD/8QAPBEBAAEDAgQEAgcHAwQDAAAAAAECAxEEBQYhMUEHElFhE3EUFSIygZGxI0KhwdHh8BYkUhczQ2JygvH/2gAMAwEAAhEDEQA/AISIiKgEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBdqwDS7PNUa+otmCWB90qKVgkmaJ4oQxp32JdI5o8D4rq2x8llDQTXK6aH5HU3WktkNfSXGNkNZC93K4saSQWu8CNz7fUrHc69Za0d2vQUxVeimfLE9Jq7RPOP1j5vrYi3Vcpi9OKc88ejqub6Z55pzXC3ZrjVVbJnDdpeWvjd/VkYSx3uK61yu8lZ9iWfaQcSOMGjfFS1xezaot1YwCeE7den94JCi/r5wc3vCxUZPp0JrpZm7yS0nfPTjvOw+/aPV19S5rw14n2tXqvqniG19F1UTjnmKKp9pnpntmZie1Us1rdjqt2/pGjq89v+Mf5/kIwcrvJaLe4PjcWSNLSCQQRsQVtPVdYYBoiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICKXWlHo29XNTMJpM0qb/ZbJHcoTNR01U6Qykddi8NYQ0H1En1KNGoOBZDpnmN0wfKaYQ3K0zGGcNO7SdgQWnxBBCkdcREUAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAv2o6OruFTHR0FLLUVEzg2OKJhc97j3AAdSV+Q71Pn0WelmM37Ich1FvdDBW1dpaynoGSxhwgeflSDfpuQRt06bbhBgLDeBfiYzWmhrqLT6WgpZwHRzXCZsQIPjsN3D3hZjxP0U2rtxIfl+bY9aGOG+1J2lW8e0ERj6VaLW19FbKc1NbM2GFuwLiOg+ZdbqtTsXptwyaacj/AMNm4P0rFblv21bPy1+ootz6VVRE/l1XFjSX9T/2aJn5Qh/i3ontN6JsZy/Ue9XUjbnFHTMpN/UNzJssu4z6Pnhe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2S3VZoYaSkeGOlna1rnc7iD8XZ7e4efVSsy70ZvDxfLTNS2Bl6slfyOEFRFVNka1+3QvY5vxhv4Aj2qIvAtxh2Th8dcsNzymqn43dZxVMmpmhz6aoIDXOLT8oENaO8bbKXWonpJdB8fxWqr8LuFTfby6NwpKQQ8jO026GR2/Ru/kp5CqfOMVqsIy+7YlWyslmtVU+nc9nc7Y9D82y4JcrlORV+W5Hccmub+aquVQ+olPrce73DouKUAs88MvCJm3ErU1tRZrtSWi0W54jqK6eMyHnP3rGAjmIBB7x3rAyl1wL8X+N8PUlzxXO6CpfYrrKKhlVSs55IJtgCXNPymkNb4jbr3qRYzw6cOOEcOmJHH8YD6quqSH19xmaBJUP2HgPktG3QbnxXatWtT8c0gwS6Z1k1WyKmt8Lnxsc7YzS7fFjb6ydh71G7LfSeaA2W3umxuhvd9rNt204hFOw+2Ql23zKvviM4pdReIq+fCMjqxRWand/odppnEQxjfcOfufju7up6dOgCnIxzqHmVx1Bze9ZpdpTJVXerfUPce/Y9Gj3NAHuXXURUgiIgIiICIiAtdytEQWYei41po6/G7ro3dqsCuoZjXW8PO3PC5oDmN8+Usc4/1lMrWHTK0aw6c3nT+9HkhulO5kcvLzdjLseSTbx5TsfcqKNPc/ybTHLbfmuI3B1JcrbK2WJ435XAHqxwHe09xHkrfeG/jX0v1ytFLQ110gsWUNjDam31cgaJHgdXRuPQgqqJFVWsnD7qVopk1XYMrx2qEMLz2FbDG58E8e/RweB84OyxxHBNM8RRRPe9x2DWjck+xehqvtNiyKkEV1ttDc6Z3UMqIWTRn3OBC4SHSfSynlE9PppisUrTuHss1M1wPnuGJgVfcDPCNm+d6iWjUbKrPU2rGbDVMrWSVEZY+qmjIcxjGkblu4G56dD0VtQDWNDGjZoGwHkF+L5KC10oMklPSU8Q2BcWxsYPoAUTeKTj3wDS2yVuOadXOnv+WSsdCwwO5oKJxG3O93iR3gepOghP6RLLLfk/EldoLfI14s1PFQSub1BeN3/seFGNfdfL1csjvFZfbxVPqa2umdPNK87lziV8KpBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQa7nbbdaIiAiIgIiICIiAiIgIiIC3xTSwSNlgldG9hDmuadiD5grYiDKuHcU/ENgULKbGNWL5DDH8iOpkbVsaPINna8AeodF3Ob0gvF7PC6CTV5/I4cp5bHbGnb2in3CjuikZAzLiA1q1AD48u1Nv9fDIOV8Hwt0ULh5GOPlYfmXQC4nck960RQCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg//2Q==");
+            background-repeat: no-repeat;
+            background-size: 20%;
+            background-position: 50% 50%;
+        }
+
+        /* ---- stats.js ---- */
+        .count-particles {
+            background: #000022;
+            position: absolute;
+            top: 48px;
+            left: 0;
+            width: 80px;
+            color: #13E8E9;
+            font-size: .8em;
+            text-align: left;
+            text-indent: 4px;
+            line-height: 14px;
+            padding-bottom: 2px;
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .js-count-particles {
+            font-size: 1.1em;
+        }
+
+        #stats,
+        .count-particles {
+            -webkit-user-select: none;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        #stats {
+            border-radius: 3px 3px 0 0;
+            overflow: hidden;
+        }
+
+        .count-particles {
+            border-radius: 0 0 3px 3px;
+        }
+
+        #particles-js {
+            position: fixed;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,150 +91,14 @@
                     <!--Logo-->
                     <div id="logo">
                         <a href="index.html">
-                            <!-- <span class="logo-default">Ejet elkahraba</span> -->
-                            <!-- <span class="logo-default">
 
-                                <svg fill="#000" className="svg" id="Layer_2" data-name="Layer 2" width="100px"
-                                    height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.56 30.57">
-                                    <g id="Layer_1-2" data-name="Layer 1">
-                                        <g>
-                                            <g>
-                                                <path className="cls-2"
-                                                    d="m15.04,18.72c.24,0,.45-.08.67-.21.48-.32.64-.96.4-1.46l-2.29-4.92,1.38-.27c.37-.08.72-.35.85-.69.16-.37.11-.77-.11-1.09l-5.22-7.98c-.27-.4-.74-.61-1.22-.51l-3.62.69c-.4.08-.72.35-.85.69-.16.37-.11.77.11,1.12l3.36,5.08-.59.11c-.43.08-.77.4-.9.8-.13.4-.03.85.27,1.17l6.86,7.15c.29.21.61.32.9.32h0Z" />
-                                                <polygon className="cls-1"
-                                                    points="9.75 2.74 6.14 3.46 10.48 10.01 8.17 10.43 15.03 17.59 12.11 11.28 14.98 10.75 9.75 2.74" />
-                                                <path className="cls-3"
-                                                    d="m13.57,1.78c-.1.17-.04.4.14.5.56.32,1.07.72,1.52,1.2.43.46.8,1,1.09,1.6.14.3.26.59.35.89.09.31.17.62.21.93h0c.03.2.21.34.41.31.2-.03.34-.21.31-.41-.05-.35-.13-.7-.24-1.04-.1-.34-.23-.67-.39-.99-.32-.67-.73-1.26-1.22-1.78-.5-.53-1.07-.98-1.69-1.34-.17-.1-.4-.04-.5.14" />
-                                                <path className="cls-3"
-                                                    d="m13.57,1.78c-.07.12-.06.27.02.38.07.11.21.15.32.23.69.42,1.31.93,1.83,1.55.69.84,1.2,1.85,1.38,2.93l-.11-.17h0s.09.06.09.06l.02.11c.02.13.21.12.23,0,0-.02-.01-.14-.02-.17-.26-1.56-.95-3.06-2.1-4.17-.37-.35-.78-.67-1.22-.91-.16-.07-.35,0-.44.16m0,0c.08-.15.28-.23.44-.17.45.24.88.53,1.28.85,1.08.87,1.93,2.05,2.34,3.38.09.29.15.6.21.9.12.8-1.07.99-1.2.19,0,0,.12.18.11.17l-.1-.06v-.11c-.21-1.52-.93-3.05-2.12-4.07-.2-.17-.41-.33-.64-.47-.11-.08-.24-.12-.32-.24-.07-.11-.08-.27,0-.38" />
-                                                <path className="cls-3"
-                                                    d="m14.79.17c-.11.17-.05.39.12.5.68.41,1.31.93,1.85,1.54.53.58.98,1.25,1.34,2,.21.44.38.88.51,1.33.13.46.22.92.28,1.39h0c.02.2.2.34.4.32.2-.02.34-.2.32-.4-.06-.51-.16-1.01-.3-1.51-.14-.49-.32-.97-.55-1.44-.39-.81-.88-1.54-1.46-2.18-.59-.66-1.27-1.22-2.02-1.67-.17-.11-.4-.05-.5.12" />
-                                                <path className="cls-3"
-                                                    d="m14.79.17c-.22.39.26.56.51.74.28.19.56.4.83.62,1.66,1.38,2.82,3.41,3.03,5.58,0,0-.21.05-.21.05l.19-.26c.02.15.25.13.24-.02-.27-2.49-1.48-4.93-3.51-6.44-.3-.18-.76-.7-1.06-.27m0,0c.3-.44.77.07,1.08.25,1.04.72,1.95,1.62,2.65,2.7.72,1.1,1.2,2.39,1.35,3.71.07.5-.54.86-.95.57-.22-.14-.27-.41-.28-.65l.21-.05h0s-.19.26-.19.26c-.07-.67-.21-1.32-.42-1.96-.42-1.29-1.15-2.48-2.15-3.42-.25-.23-.51-.46-.8-.65-.25-.18-.73-.37-.5-.76" />
-                                                <path className="cls-3"
-                                                    d="m6.3,13.23c.1-.17.04-.4-.14-.5-.56-.32-1.07-.72-1.52-1.2-.43-.46-.8-1-1.09-1.6-.14-.3-.26-.59-.35-.89-.09-.31-.17-.62-.21-.93h0c-.03-.2-.21-.34-.41-.31-.2.03-.34.21-.31.41.05.35.13.7.24,1.04.1.34.23.67.39.99.32.67.73,1.26,1.22,1.78.5.53,1.07.98,1.69,1.34.17.1.4.04.5-.14" />
-                                                <path className="cls-3"
-                                                    d="m6.3,13.23c.07-.12.06-.27-.02-.38-.07-.11-.21-.15-.32-.23-.69-.42-1.31-.93-1.83-1.55-.69-.84-1.2-1.85-1.38-2.93l.11.17h0s-.09-.06-.09-.06l-.02-.11c-.02-.13-.21-.13-.23,0,0,.02.01.14.02.17.26,1.56.95,3.06,2.1,4.17.37.35.78.67,1.22.91.16.07.35,0,.44-.16m0,0c-.08.15-.28.23-.44.17-.46-.24-.88-.53-1.28-.85-1.08-.87-1.93-2.05-2.34-3.38-.09-.29-.16-.6-.21-.9-.12-.8,1.07-.99,1.2-.19,0,0-.12-.18-.11-.17l.1.06v.11c.21,1.52.93,3.05,2.12,4.07.2.17.41.33.64.47.11.08.24.12.32.24.07.11.08.27,0,.38" />
-                                                <path className="cls-3"
-                                                    d="m5.08,14.83c.11-.17.05-.39-.12-.5-.68-.41-1.31-.93-1.85-1.54-.53-.58-.98-1.25-1.34-2-.21-.44-.38-.88-.51-1.33-.13-.46-.22-.92-.28-1.39h0c-.02-.2-.2-.34-.4-.32-.2.02-.34.2-.32.4.06.51.16,1.01.3,1.51.14.49.32.97.55,1.44.39.81.88,1.54,1.46,2.18.59.66,1.27,1.22,2.02,1.67.17.11.4.05.5-.12" />
-                                                <path className="cls-3"
-                                                    d="m5.08,14.83c.22-.39-.26-.56-.51-.74-.28-.19-.56-.4-.83-.62-1.66-1.38-2.82-3.41-3.03-5.58,0,0,.21-.05.21-.05l-.19.26c-.02-.15-.25-.13-.24.02.27,2.49,1.48,4.93,3.51,6.44.3.18.76.7,1.06.27m0,0c-.3.44-.77-.07-1.08-.25-1.04-.72-1.95-1.62-2.65-2.7C.63,10.78.15,9.5,0,8.18c-.07-.5.54-.86.95-.57.22.14.27.41.28.65l-.21.05h0s.19-.26.19-.26c.07.67.21,1.32.42,1.96.42,1.29,1.15,2.48,2.15,3.42.25.23.51.46.8.65.25.18.73.37.5.76" />
-                                            </g>
-                                            <g>
-                                                <path className="cls-2"
-                                                    d="m26.3,5.47c.41.05.83-.32.83-.74s-.22-.85-.68-.92c-.41-.05-.83.31-.83.74,0,.4.23.83.68.92" />
-                                                <path className="cls-2"
-                                                    d="m28.17,5.47c.41.05.88-.32.88-.74,0-1.12-1.55-1.3-1.55-.18,0,.4.2.83.67.92" />
-                                                <path className="cls-2"
-                                                    d="m40.03,3.29c-.68.04-.83,1.26.23,1.26,2.59,0,3.6,1.17,3.58,2.19-.04,1.53-6.86,1.44-9.48,1.44-1.35,0-1.57-.76-1.57-1.53.02-.43,0-.92-.05-1.49-.11-.77-1.3-.74-1.26.2.2,3.11-1.06,2.82-4.08,2.82-3.67,0-4.16-.43-4.16-1.94,0-.5-.02-1.3-.58-1.3-.59,0-.68.61-.68,1.3,0,2.59,1.3,3.17,5.42,3.17,2.23,0,3.81.09,4.66-.7.4.45,1.08.74,2.3.74h0s0,0,0,0h0c3.44,0,10.72,0,10.72-2.65,0-1.75-1.48-3.69-5.06-3.51" />
-                                                <path className="cls-2"
-                                                    d="m41.59,10.65c-.41,0-.7.4-.61.83.09.43.4.65.83.65s.76-.54.68-.95c-.05-.43-.49-.52-.9-.52" />
-                                                <path className="cls-2"
-                                                    d="m47.01,9.45c.25-.04.67-.11.65-1.03-.04-2.25-.02-3.38-.16-6.64-.04-.83-.4-.92-.72-.83-.45.07-.43.49-.43,1.01.02,3.6.02,4.17.02,6.64,0,.85.41.88.65.85" />
-                                                <path className="cls-2"
-                                                    d="m48.21,12.29c-.76,0-.81.07-.88-.05-.56-.97-.34-1.53.65-1.33.47.09.52-.61.23-.65-2.34-.58-2.54,1.08-1.78,2.03-.36.05-.43.05-.65.07-.4.04-.43.97.29.97.34,0,1.51-.02,2.02-.05.7-.02.5-.99.13-.99" />
-                                            </g>
-                                            <g>
-                                                <path className="cls-3"
-                                                    d="m24.4,25.45c1.8,0,3.78-.65,3.78-2.2,0-1.06-.82-1.49-1.74-1.49-1.16,0-2.04,1.29-2.04,3.69" />
-                                                <path className="cls-2"
-                                                    d="m8.37,22.69c0,1.43.33,2.96-1.69,2.96-1.47,0-1.69-.8-1.71-1.65,0-.31.04-4.2.04-5.16s-.35-1.12-.86-1.06c-.27.04-.49.43-.53,1.2-.04.69-.06,4.92-.04,5.35.02,1.41.45,2.69,3.1,2.69h0c3.47,0,3.14-2.18,3.06-4.39-.04-.84-1.37-.71-1.37.06" />
-                                                <path className="cls-2"
-                                                    d="m6.53,28.41c-.45,0-.76.43-.67.9.1.47.43.71.9.71s.82-.59.75-1.04c-.06-.47-.53-.57-.98-.57" />
-                                                <path className="cls-2"
-                                                    d="m44.61,17.85c-.39.02-.61.25-.61.63l.02,5.04c0,1.29-.22,2.14-1.71,2.14-.02,0-.04,0-.06,0h0c-2.71,0-3.39-.46-3.57-.91-.02-.27-.1-.57-.22-.9-.22-.59-.57-1.33-.88-1.94-.65-1.25-.39-1.51,1.29-2.12,1-.33,1.94-.53,3.06-1,.65-.29.31-.9.02-1.14-.41-.37-2.8.43-4.51,1.14-1.8.73-1.98,1.69-1.2,3.53.29.65.37.71.74,1.63.73,1.76-.47,1.71-1.73,1.71,0,0-.01,0-.02,0h0s-.47,0-.47,0h-4.63c-.24,0-.83,0-1.51-.05-.09,0-.18-.02-.28-.02.1-.11.19-.22.28-.34,1.61-2.08.76-4.76-2.1-4.76s-3.47,2.39-3.47,5.18h-7.88c-1.04,0-1.45-.39-1.61-.92-.06-.65-.16-1.33-.29-2.06-.16-.84-1.33-.71-1.22.31.33,2.94.25,5.43-1,5.76-.63.16-.43,1.41.53,1.22,1.23-.26,1.86-1.39,2-3.16.41.14.92.22,1.59.22h6.94s.01,0,.02,0h.92c.12,2.55,1.47,3.55,3.16,3.55,1.51,0,3.57-.88,2.55-3.63.71.1,1.1.08,1.37.08h5.09s.01,0,.02,0h.55c.88,0,1.8-.18,2.35-.73.73.45,1.96.73,4.08.73h0s.04,0,.06,0c2.86,0,3.08-1.49,3.1-3.04.04-2.23-.04-4.31-.04-5.41,0-.59-.45-.75-.76-.73m-18.37,11.49c-1.39,0-1.78-.96-1.8-2.51.67-.08,1.27-.22,1.8-.37,2.06.24,1.96,2.88,0,2.88m-1.84-3.88c0-2.39.88-3.69,2.04-3.69.92,0,1.74.43,1.74,1.49,0,1.55-1.98,2.2-3.78,2.2" />
-                                                <path className="cls-2"
-                                                    d="m48.06,18.67c-.04-.9-.43-1-.78-.9-.49.08-.47.53-.47,1.1.02,3.92.02,4.55.02,7.23,0,.92.45.96.71.92.27-.04.73-.12.71-1.12-.04-2.45-.02-3.69-.18-7.23" />
-                                                <path className="cls-3"
-                                                    d="m21.89,15.98c-.16-.31-.04-.69.27-.85.31-.16.68-.04.85.27l.97,1.88c.16.31.04.69-.26.85-.31.16-.69.04-.85-.27l-.98-1.88Z" />
-                                                <path className="cls-3"
-                                                    d="m27.57,17.8c-.33-.1-.51-.46-.41-.79l.64-2.02c.11-.33.46-.51.79-.41.33.11.51.46.41.79l-.64,2.02c-.1.33-.46.51-.79.41" />
-                                                <path className="cls-3"
-                                                    d="m30.53,20.29c-.16-.31-.04-.69.27-.85l1.88-.98c.31-.16.69-.04.85.27.16.31.04.69-.27.85l-1.88.98c-.31.16-.69.04-.85-.27" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </span> -->
                             <span class="logo-dark">
 
                                 <img width="80px" height="50px"
                                     src="https://ucarecdn.com/d04042cb-0bae-4088-b099-577e4c9a1cf6/-/preview/500x500/-/quality/smart/-/format/auto/" />
-                                <!-- <svg className="svg logo-white" fill="#ffff" id="Layer_2" data-name="Layer 2"
-                                    width="80px" height="80px" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 48.56 30.57">
-                                    <g id="Layer_1-2" data-name="Layer 1">
-                                        <g>
-                                            <g>
-                                                <path className="cls-2"
-                                                    d="m15.04,18.72c.24,0,.45-.08.67-.21.48-.32.64-.96.4-1.46l-2.29-4.92,1.38-.27c.37-.08.72-.35.85-.69.16-.37.11-.77-.11-1.09l-5.22-7.98c-.27-.4-.74-.61-1.22-.51l-3.62.69c-.4.08-.72.35-.85.69-.16.37-.11.77.11,1.12l3.36,5.08-.59.11c-.43.08-.77.4-.9.8-.13.4-.03.85.27,1.17l6.86,7.15c.29.21.61.32.9.32h0Z" />
-                                                <polygon className="cls-1"
-                                                    points="9.75 2.74 6.14 3.46 10.48 10.01 8.17 10.43 15.03 17.59 12.11 11.28 14.98 10.75 9.75 2.74" />
-                                                <path className="cls-3"
-                                                    d="m13.57,1.78c-.1.17-.04.4.14.5.56.32,1.07.72,1.52,1.2.43.46.8,1,1.09,1.6.14.3.26.59.35.89.09.31.17.62.21.93h0c.03.2.21.34.41.31.2-.03.34-.21.31-.41-.05-.35-.13-.7-.24-1.04-.1-.34-.23-.67-.39-.99-.32-.67-.73-1.26-1.22-1.78-.5-.53-1.07-.98-1.69-1.34-.17-.1-.4-.04-.5.14" />
-                                                <path className="cls-3"
-                                                    d="m13.57,1.78c-.07.12-.06.27.02.38.07.11.21.15.32.23.69.42,1.31.93,1.83,1.55.69.84,1.2,1.85,1.38,2.93l-.11-.17h0s.09.06.09.06l.02.11c.02.13.21.12.23,0,0-.02-.01-.14-.02-.17-.26-1.56-.95-3.06-2.1-4.17-.37-.35-.78-.67-1.22-.91-.16-.07-.35,0-.44.16m0,0c.08-.15.28-.23.44-.17.45.24.88.53,1.28.85,1.08.87,1.93,2.05,2.34,3.38.09.29.15.6.21.9.12.8-1.07.99-1.2.19,0,0,.12.18.11.17l-.1-.06v-.11c-.21-1.52-.93-3.05-2.12-4.07-.2-.17-.41-.33-.64-.47-.11-.08-.24-.12-.32-.24-.07-.11-.08-.27,0-.38" />
-                                                <path className="cls-3"
-                                                    d="m14.79.17c-.11.17-.05.39.12.5.68.41,1.31.93,1.85,1.54.53.58.98,1.25,1.34,2,.21.44.38.88.51,1.33.13.46.22.92.28,1.39h0c.02.2.2.34.4.32.2-.02.34-.2.32-.4-.06-.51-.16-1.01-.3-1.51-.14-.49-.32-.97-.55-1.44-.39-.81-.88-1.54-1.46-2.18-.59-.66-1.27-1.22-2.02-1.67-.17-.11-.4-.05-.5.12" />
-                                                <path className="cls-3"
-                                                    d="m14.79.17c-.22.39.26.56.51.74.28.19.56.4.83.62,1.66,1.38,2.82,3.41,3.03,5.58,0,0-.21.05-.21.05l.19-.26c.02.15.25.13.24-.02-.27-2.49-1.48-4.93-3.51-6.44-.3-.18-.76-.7-1.06-.27m0,0c.3-.44.77.07,1.08.25,1.04.72,1.95,1.62,2.65,2.7.72,1.1,1.2,2.39,1.35,3.71.07.5-.54.86-.95.57-.22-.14-.27-.41-.28-.65l.21-.05h0s-.19.26-.19.26c-.07-.67-.21-1.32-.42-1.96-.42-1.29-1.15-2.48-2.15-3.42-.25-.23-.51-.46-.8-.65-.25-.18-.73-.37-.5-.76" />
-                                                <path className="cls-3"
-                                                    d="m6.3,13.23c.1-.17.04-.4-.14-.5-.56-.32-1.07-.72-1.52-1.2-.43-.46-.8-1-1.09-1.6-.14-.3-.26-.59-.35-.89-.09-.31-.17-.62-.21-.93h0c-.03-.2-.21-.34-.41-.31-.2.03-.34.21-.31.41.05.35.13.7.24,1.04.1.34.23.67.39.99.32.67.73,1.26,1.22,1.78.5.53,1.07.98,1.69,1.34.17.1.4.04.5-.14" />
-                                                <path className="cls-3"
-                                                    d="m6.3,13.23c.07-.12.06-.27-.02-.38-.07-.11-.21-.15-.32-.23-.69-.42-1.31-.93-1.83-1.55-.69-.84-1.2-1.85-1.38-2.93l.11.17h0s-.09-.06-.09-.06l-.02-.11c-.02-.13-.21-.13-.23,0,0,.02.01.14.02.17.26,1.56.95,3.06,2.1,4.17.37.35.78.67,1.22.91.16.07.35,0,.44-.16m0,0c-.08.15-.28.23-.44.17-.46-.24-.88-.53-1.28-.85-1.08-.87-1.93-2.05-2.34-3.38-.09-.29-.16-.6-.21-.9-.12-.8,1.07-.99,1.2-.19,0,0-.12-.18-.11-.17l.1.06v.11c.21,1.52.93,3.05,2.12,4.07.2.17.41.33.64.47.11.08.24.12.32.24.07.11.08.27,0,.38" />
-                                                <path className="cls-3"
-                                                    d="m5.08,14.83c.11-.17.05-.39-.12-.5-.68-.41-1.31-.93-1.85-1.54-.53-.58-.98-1.25-1.34-2-.21-.44-.38-.88-.51-1.33-.13-.46-.22-.92-.28-1.39h0c-.02-.2-.2-.34-.4-.32-.2.02-.34.2-.32.4.06.51.16,1.01.3,1.51.14.49.32.97.55,1.44.39.81.88,1.54,1.46,2.18.59.66,1.27,1.22,2.02,1.67.17.11.4.05.5-.12" />
-                                                <path className="cls-3"
-                                                    d="m5.08,14.83c.22-.39-.26-.56-.51-.74-.28-.19-.56-.4-.83-.62-1.66-1.38-2.82-3.41-3.03-5.58,0,0,.21-.05.21-.05l-.19.26c-.02-.15-.25-.13-.24.02.27,2.49,1.48,4.93,3.51,6.44.3.18.76.7,1.06.27m0,0c-.3.44-.77-.07-1.08-.25-1.04-.72-1.95-1.62-2.65-2.7C.63,10.78.15,9.5,0,8.18c-.07-.5.54-.86.95-.57.22.14.27.41.28.65l-.21.05h0s.19-.26.19-.26c.07.67.21,1.32.42,1.96.42,1.29,1.15,2.48,2.15,3.42.25.23.51.46.8.65.25.18.73.37.5.76" />
-                                            </g>
-                                            <g>
-                                                <path className="cls-2"
-                                                    d="m26.3,5.47c.41.05.83-.32.83-.74s-.22-.85-.68-.92c-.41-.05-.83.31-.83.74,0,.4.23.83.68.92" />
-                                                <path className="cls-2"
-                                                    d="m28.17,5.47c.41.05.88-.32.88-.74,0-1.12-1.55-1.3-1.55-.18,0,.4.2.83.67.92" />
-                                                <path className="cls-2"
-                                                    d="m40.03,3.29c-.68.04-.83,1.26.23,1.26,2.59,0,3.6,1.17,3.58,2.19-.04,1.53-6.86,1.44-9.48,1.44-1.35,0-1.57-.76-1.57-1.53.02-.43,0-.92-.05-1.49-.11-.77-1.3-.74-1.26.2.2,3.11-1.06,2.82-4.08,2.82-3.67,0-4.16-.43-4.16-1.94,0-.5-.02-1.3-.58-1.3-.59,0-.68.61-.68,1.3,0,2.59,1.3,3.17,5.42,3.17,2.23,0,3.81.09,4.66-.7.4.45,1.08.74,2.3.74h0s0,0,0,0h0c3.44,0,10.72,0,10.72-2.65,0-1.75-1.48-3.69-5.06-3.51" />
-                                                <path className="cls-2"
-                                                    d="m41.59,10.65c-.41,0-.7.4-.61.83.09.43.4.65.83.65s.76-.54.68-.95c-.05-.43-.49-.52-.9-.52" />
-                                                <path className="cls-2"
-                                                    d="m47.01,9.45c.25-.04.67-.11.65-1.03-.04-2.25-.02-3.38-.16-6.64-.04-.83-.4-.92-.72-.83-.45.07-.43.49-.43,1.01.02,3.6.02,4.17.02,6.64,0,.85.41.88.65.85" />
-                                                <path className="cls-2"
-                                                    d="m48.21,12.29c-.76,0-.81.07-.88-.05-.56-.97-.34-1.53.65-1.33.47.09.52-.61.23-.65-2.34-.58-2.54,1.08-1.78,2.03-.36.05-.43.05-.65.07-.4.04-.43.97.29.97.34,0,1.51-.02,2.02-.05.7-.02.5-.99.13-.99" />
-                                            </g>
-                                            <g>
-                                                <path className="cls-3"
-                                                    d="m24.4,25.45c1.8,0,3.78-.65,3.78-2.2,0-1.06-.82-1.49-1.74-1.49-1.16,0-2.04,1.29-2.04,3.69" />
-                                                <path className="cls-2"
-                                                    d="m8.37,22.69c0,1.43.33,2.96-1.69,2.96-1.47,0-1.69-.8-1.71-1.65,0-.31.04-4.2.04-5.16s-.35-1.12-.86-1.06c-.27.04-.49.43-.53,1.2-.04.69-.06,4.92-.04,5.35.02,1.41.45,2.69,3.1,2.69h0c3.47,0,3.14-2.18,3.06-4.39-.04-.84-1.37-.71-1.37.06" />
-                                                <path className="cls-2"
-                                                    d="m6.53,28.41c-.45,0-.76.43-.67.9.1.47.43.71.9.71s.82-.59.75-1.04c-.06-.47-.53-.57-.98-.57" />
-                                                <path className="cls-2"
-                                                    d="m44.61,17.85c-.39.02-.61.25-.61.63l.02,5.04c0,1.29-.22,2.14-1.71,2.14-.02,0-.04,0-.06,0h0c-2.71,0-3.39-.46-3.57-.91-.02-.27-.1-.57-.22-.9-.22-.59-.57-1.33-.88-1.94-.65-1.25-.39-1.51,1.29-2.12,1-.33,1.94-.53,3.06-1,.65-.29.31-.9.02-1.14-.41-.37-2.8.43-4.51,1.14-1.8.73-1.98,1.69-1.2,3.53.29.65.37.71.74,1.63.73,1.76-.47,1.71-1.73,1.71,0,0-.01,0-.02,0h0s-.47,0-.47,0h-4.63c-.24,0-.83,0-1.51-.05-.09,0-.18-.02-.28-.02.1-.11.19-.22.28-.34,1.61-2.08.76-4.76-2.1-4.76s-3.47,2.39-3.47,5.18h-7.88c-1.04,0-1.45-.39-1.61-.92-.06-.65-.16-1.33-.29-2.06-.16-.84-1.33-.71-1.22.31.33,2.94.25,5.43-1,5.76-.63.16-.43,1.41.53,1.22,1.23-.26,1.86-1.39,2-3.16.41.14.92.22,1.59.22h6.94s.01,0,.02,0h.92c.12,2.55,1.47,3.55,3.16,3.55,1.51,0,3.57-.88,2.55-3.63.71.1,1.1.08,1.37.08h5.09s.01,0,.02,0h.55c.88,0,1.8-.18,2.35-.73.73.45,1.96.73,4.08.73h0s.04,0,.06,0c2.86,0,3.08-1.49,3.1-3.04.04-2.23-.04-4.31-.04-5.41,0-.59-.45-.75-.76-.73m-18.37,11.49c-1.39,0-1.78-.96-1.8-2.51.67-.08,1.27-.22,1.8-.37,2.06.24,1.96,2.88,0,2.88m-1.84-3.88c0-2.39.88-3.69,2.04-3.69.92,0,1.74.43,1.74,1.49,0,1.55-1.98,2.2-3.78,2.2" />
-                                                <path className="cls-2"
-                                                    d="m48.06,18.67c-.04-.9-.43-1-.78-.9-.49.08-.47.53-.47,1.1.02,3.92.02,4.55.02,7.23,0,.92.45.96.71.92.27-.04.73-.12.71-1.12-.04-2.45-.02-3.69-.18-7.23" />
-                                                <path className="cls-3"
-                                                    d="m21.89,15.98c-.16-.31-.04-.69.27-.85.31-.16.68-.04.85.27l.97,1.88c.16.31.04.69-.26.85-.31.16-.69.04-.85-.27l-.98-1.88Z" />
-                                                <path className="cls-3"
-                                                    d="m27.57,17.8c-.33-.1-.51-.46-.41-.79l.64-2.02c.11-.33.46-.51.79-.41.33.11.51.46.41.79l-.64,2.02c-.1.33-.46.51-.79.41" />
-                                                <path className="cls-3"
-                                                    d="m30.53,20.29c-.16-.31-.04-.69.27-.85l1.88-.98c.31-.16.69-.04.85.27.16.31.04.69-.27.85l-1.88.98c-.31.16-.69.04-.85-.27" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg> -->
                             </span>
                         </a>
                     </div>
-                    <!--End: Logo-->
-                    <!-- Search -->
-                    <!-- <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i
-                                class="icon-x"></i></a>
-                        <form class="search-form" action="search-results-page.html" method="get">
-                            <input class="form-control" name="q" type="text" placeholder="Type & Search..." />
-                            <span class="text-muted">Start typing & press "Enter" or "ESC" to close</span>
-                        </form>
-                    </div> -->
-                    <!-- end: search -->
                     <!--Navigation Resposnive Trigger-->
                     <div id="mainMenu-trigger">
                         <a class="lines-button x"><span class="lines"></span></a>
@@ -212,24 +141,16 @@
         <!-- body here -->
 
         <!-- header here -->
-        <!-- <div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-height-xs="360">
-            <div class="slide kenburns" data-bg-parallax="images/parallax/3.jpg">
-                <div class="bg-overlay"></div>
-                <div class="container">
-                    <div class="slide-captions text-light">
-                        <span data-animate="fadeInUp" data-animate-delay="300" class="strong"><a href="#"
-                                class="business"><span class="business">because we need to support lebanon</span></a>
-                        </span>
-                        <h1 data-animate="fadeInUp" data-animate-delay="600">stay tuned with electricity status of your
-                            area in Realtime</h1>
-                        <div data-animate="fadeInUp" data-animate-delay="900">
-                            <button type="button" class="btn btn-rounded btn-reveal btn-reveal-left"><span>Get
-                                    Notified</span><i class="icon-chevron-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
+        <!-- PARTICLES SECTION -->
+
+        <!-- particles.js container -->
+        <div id="particles-js"></div> <!-- stats - count particles -->
+        <div class="count-particles"> <span class="js-count-particles">--</span> particles </div>
+        <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+
+
+        <!-- END OF PARTICLES SECTION -->
 
         <section class="text-light p-b-0 yellow-section">
             <div class="container">
@@ -275,8 +196,8 @@
 
         <!-- section before svgs -->
 
-        <div id="about-us" class="heading-text text-center m-50 p-t-100 p-b-100">
-            <h4><span>Just because we are in Lebanon, we feel the pain of the random
+        <div id="about-us" class="heading-text text-center m-50 p-t-100 p-b-100 text-light">
+            <h4 class="m-t-100"><span>Just because we are in Lebanon, we feel the pain of the random
                     electrecity
                     outage </span></h4>
             <p class="h1">Regardless of what power resources you are using, you may feel the pain:</p>
@@ -291,62 +212,16 @@
             <div class="container">
                 <!-- <h2 class="text-center m-b-50">Just because we are in Lebanon, we feel the pain of the random
                     electrecity
-                    outage </h2>
-                <h4 class="m-b-80 text-center">Regardless of what power resources you are using, you may feel the pain:
-                </h4> -->
-                <!-- <div class="row">
-                    <div class="col-lg-3" data-animate="fadeInUp" data-animate-delay="0">
-                        <div class="icon-box effect small border small">
-                            <div class="icon">
-                                <a href="#"><i class="fa fa-battery"></i></a>
-                            </div>
-                            <h3>Battery Drain:</h3>
-                            <p>when you continue to consume too much and the electricity is suddenly off</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3" data-animate="fadeInUp" data-animate-delay="200">
-                        <div class="icon-box effect small border small">
-                            <div class="icon">
-                                <a href="#"><i class="fa fa-x"></i></a>
-                            </div>
-                            <h3>Lost Opportunity:</h3>
-                            <p> when you electricity becomes available at night and you forget to turn on Battery
-                                charger</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3" data-animate="fadeInUp" data-animate-delay="400">
-                        <div class="icon-box effect small border small">
-                            <div class="icon">
-                                <a href="#"><i class="fa fa-clock"></i></a>
-                            </div>
-                            <h3>Waste of Time:</h3>
-                            <p>when you need to perform some tasks based on your anticipation of the electricity
-                                schedule</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3" data-animate="fadeInUp" data-animate-delay="600">
-                        <div class="icon-box effect small border small">
-                            <div class="icon">
-                                <a href="#"><i class="far fa-dollar"></i></a>
-                            </div>
-                            <h3>Lack of Saving:</h3>
-                            <p> when you need to save money by consuming on the grid-electricity more than the other
-                                power sources</p>
-                        </div>
-                    </div>
-                </div> -->
+                    outage </h2> -->
+                <h2 class="m-b-80 m-t-100 text-center">Regardless of what power resources you are using, you may feel
+                    the
+                    pain:
+                </h2>
 
                 <div class="row" DS>
-                    <!-- <div class="icon-box effect large center process">
-                        <div class="icon"> <a href="#"><i class="fa fa-cloud"></i></a> </div>
-                        <h3>Retina Ready</h3>
-                        <p>Consecte adipiscing elit. Suspendisse condimentum porttitor cursumus.</p>
-                    </div> -->
 
                     <div class="col-lg-3" id="user-pain">
                         <div class="icon-box box-type effect medium center process">
-                            <!-- <div class="icon"> <a href="#"><i class="fa fa-cloud"></i></a> </div> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 250 250"
                                 preserveAspectRatio="none">
                                 <path
@@ -525,6 +400,8 @@
 
         <!-- end of icons -->
 
+        <!-- user stories -->
+
         <section class="user-stories container">
 
             <h2 class="text-center">User Stories</h2>
@@ -533,6 +410,23 @@
             <!-- grid-layout portfolio-4-columns grid-loaded -->
             <div id="portfolio" class="grid-layout portfolio-4-columns grid-loaded" data-margin="10"
                 style="margin: 0px -10px -10px 0px; position: relative;">
+
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
+                    style="padding: 0px 10px 10px 0px; position: absolute; left: 0px; top: 212.5px;">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#"><img src="https://picsum.photos/265" alt=""></a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="portfolio-page-grid-gallery.html">
+                                <h3>Let's Go Outside</h3>
+                                <span>Illustrations / Graphics</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: portfolio item -->
 
                 <!-- portfolio item -->
                 <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
@@ -590,155 +484,116 @@
 
             <!-- </div> -->
 
+            <!-- Portfolio -->
+            <div class="portfolio container">
+
+                <!-- Portfolio -->
+                <div id="portfolio" class="grid-layout portfolio-4-columns grid-loaded" data-margin="0"
+                    style="margin: 0px; position: relative; height: 740px;">
+
+                    <!-- portfolio item -->
+                    <div class="portfolio-item large-width img-zoom ct-photography ct-media ct-branding ct-Media"
+                        style="padding: 0px; position: absolute; left: 555px; top: 0px;">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="#"><img src="https://picsum.photos/265" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="portfolio-page-grid-gallery.html">
+                                    <h3>Let's Go Outside</h3>
+                                    <span>Illustrations / Graphics</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+
+                    <!-- portfolio item -->
+                    <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
+                        style="padding: 0px; position: absolute; left: 555px; top: 0px;">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="#"><img src="https://picsum.photos/265" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="portfolio-page-grid-gallery.html">
+                                    <h3>Let's Go Outside</h3>
+                                    <span>Illustrations / Graphics</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+
+
+                    <!-- portfolio item -->
+                    <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
+                        style="padding: 0px; position: absolute; left: 555px; top: 0px;">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="#"><img src="https://picsum.photos/265" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="portfolio-page-grid-gallery.html">
+                                    <h3>Let's Go Outside</h3>
+                                    <span>Illustrations / Graphics</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+
+
+
+                    <!-- portfolio item -->
+                    <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
+                        style="padding: 0px; position: absolute; left: 555px; top: 0px;">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="#"><img src="https://picsum.photos/265" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="portfolio-page-grid-gallery.html">
+                                    <h3>Let's Go Outside</h3>
+                                    <span>Illustrations / Graphics</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+
+
+
+                    <!-- portfolio item -->
+                    <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
+                        style="padding: 0px; position: absolute; left: 555px; top: 0px;">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="#"><img src="https://picsum.photos/265" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="portfolio-page-grid-gallery.html">
+                                    <h3>Let's Go Outside</h3>
+                                    <span>Illustrations / Graphics</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+
+                    <div class="grid-loader"></div>
+                </div>
+                <!-- end: Portfolio -->
+            </div>
+            <!-- end: Portfolio -->
+
         </section>
+
+        <!-- end of user stories -->
 
 
         <!-- end of body -->
 
-        <!-- user stories -->
-
-
-        <!-- Portfolio -->
-        <div class="portfolio container">
-
-            <!-- Portfolio -->
-            <div id="portfolio" class="grid-layout portfolio-4-columns grid-loaded" data-margin="0"
-                style="margin: 0px; position: relative; height: 740px;">
-
-                <!-- portfolio item -->
-                <div class="portfolio-item large-width img-zoom ct-photography ct-media ct-branding ct-Media"
-                    style="padding: 0px; position: absolute; left: 555px; top: 0px;">
-                    <div class="portfolio-item-wrap">
-                        <div class="portfolio-image">
-                            <a href="#"><img src="https://picsum.photos/265" alt=""></a>
-                        </div>
-                        <div class="portfolio-description">
-                            <a href="portfolio-page-grid-gallery.html">
-                                <h3>Let's Go Outside</h3>
-                                <span>Illustrations / Graphics</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: portfolio item -->
-
-                <!-- portfolio item -->
-                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
-                    style="padding: 0px; position: absolute; left: 555px; top: 0px;">
-                    <div class="portfolio-item-wrap">
-                        <div class="portfolio-image">
-                            <a href="#"><img src="https://picsum.photos/265" alt=""></a>
-                        </div>
-                        <div class="portfolio-description">
-                            <a href="portfolio-page-grid-gallery.html">
-                                <h3>Let's Go Outside</h3>
-                                <span>Illustrations / Graphics</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: portfolio item -->
-
-
-                <!-- portfolio item -->
-                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
-                    style="padding: 0px; position: absolute; left: 555px; top: 0px;">
-                    <div class="portfolio-item-wrap">
-                        <div class="portfolio-image">
-                            <a href="#"><img src="https://picsum.photos/265" alt=""></a>
-                        </div>
-                        <div class="portfolio-description">
-                            <a href="portfolio-page-grid-gallery.html">
-                                <h3>Let's Go Outside</h3>
-                                <span>Illustrations / Graphics</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: portfolio item -->
-
-
-
-                <!-- portfolio item -->
-                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
-                    style="padding: 0px; position: absolute; left: 555px; top: 0px;">
-                    <div class="portfolio-item-wrap">
-                        <div class="portfolio-image">
-                            <a href="#"><img src="https://picsum.photos/265" alt=""></a>
-                        </div>
-                        <div class="portfolio-description">
-                            <a href="portfolio-page-grid-gallery.html">
-                                <h3>Let's Go Outside</h3>
-                                <span>Illustrations / Graphics</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: portfolio item -->
-
-
-
-                <!-- portfolio item -->
-                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media"
-                    style="padding: 0px; position: absolute; left: 555px; top: 0px;">
-                    <div class="portfolio-item-wrap">
-                        <div class="portfolio-image">
-                            <a href="#"><img src="https://picsum.photos/265" alt=""></a>
-                        </div>
-                        <div class="portfolio-description">
-                            <a href="portfolio-page-grid-gallery.html">
-                                <h3>Let's Go Outside</h3>
-                                <span>Illustrations / Graphics</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: portfolio item -->
-
-                <div class="grid-loader"></div>
-            </div>
-            <!-- end: Portfolio -->
-        </div>
-        <!-- end: Portfolio -->
-
-        <!-- user stories -->
-
-        <!-- numbers and figures -->
-
-        <!-- <div class="container clearfix text-dark">
-            <div class="row">
-                <div class="col-lg-3 text-center text-light"> <span class="pie-chart" data-percent="95"> <span
-                            class="percent" style="width: 160px; height: 160px; line-height: 160px;">95</span> <canvas
-                            height="320" width="320" style="height: 160px; width: 160px;"></canvas></span>
-                    <h4>SKILLS</h4>
-                    <p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Condimentum porttitor cursumus.</p>
-                </div>
-                <div class="col-lg-3 text-center text-light">
-                    <div class="pie-chart" data-percent="89" data-color="#EA4C89"> <span class="percent"
-                            style="width: 160px; height: 160px; line-height: 160px;">89</span> <canvas height="320"
-                            width="320" style="height: 160px; width: 160px;"></canvas></div>
-                    <h4>CONTENT</h4>
-                    <p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Suspendisse condimentum cursumus.</p>
-                </div>
-                <div class="col-lg-3 text-center text-light">
-                    <div class="pie-chart" data-percent="95" data-color="#FF675B"> <span class="percent"
-                            style="width: 160px; height: 160px; line-height: 160px;">95</span> <canvas height="320"
-                            width="320" style="height: 160px; width: 160px;"></canvas></div>
-                    <h4>WEB SITES</h4>
-                    <p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Suspendisse condimentum porttitor.</p>
-                </div>
-                <div class="col-lg-3 text-center text-light">
-                    <div class="pie-chart" data-percent="66" data-color="#FF9900"> <span class="percent"
-                            style="width: 160px; height: 160px; line-height: 160px;">66</span> <canvas height="320"
-                            width="320" style="height: 160px; width: 160px;"></canvas></div>
-                    <h4>EMPLOYEES</h4>
-                    <p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Suspendisse condimentum porttitor cursumus.
-                    </p>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- end of numbers and figures -->
 
         <!-- COUNTERS -->
         <section class="background-grey text-dark">
@@ -792,271 +647,232 @@
         </section>
         <!-- end: COUNTERS -->
 
-        <!-- Client logo -->
-        <section class="text-center">
-            <!-- <div class="container">
-                <div class="carousel client-logos" data-items="6" data-items-sm="4" data-items-xs="3" data-items-xxs="2"
-                    data-margin="20" data-arrows="false" data-autoplay="true" data-autoplay="3000" data-loop="true">
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/1.png"> </a>
+        <!-- Testimonials -->
+        <div class="carousel arrows-visibile testimonial testimonial-single text-light" data-items="1" data-loop="true"
+            data-autoplay="true" data-autoplay="3500" data-arrows="false">
+
+            <!-- Testimonials item -->
+            <div class="testimonial-item">
+                <img src="https://picsum.photos/201" alt="">
+                <p>Polo is by far the most amazing template out there! I literally could not be happier that I chose
+                    to
+                    buy this template!</p>
+                <span>Alan Monre</span>
+                <span>CEO, Square Software</span>
+            </div>
+            <!-- end: Testimonials item-->
+
+            <!-- Testimonials item -->
+            <div class="testimonial-item">
+                <img src="https://picsum.photos/215" alt="">
+                <p>Polo is by far the most amazing template out there! I literally could not be happier that I chose
+                    to
+                    buy this template!</p>
+                <span>Alan Monre</span>
+                <span>CEO, Square Software</span>
+            </div>
+            <!-- end: Testimonials item-->
+
+            <!-- Testimonials item -->
+            <div class="testimonial-item">
+                <img src="https://picsum.photos/203" alt="">
+                <p>The world is a dangerous place to live; not because of the people who are evil, but because of
+                    the
+                    people who don't do anything about it.</p>
+                <span>Alan Monre</span>
+                <span>CEO, Square Software</span>
+            </div>
+            <!-- end: Testimonials item-->
+
+        </div>
+        <!-- end: Testimonials -->
+
+        <!-- BLOG -->
+        <section id="section4" class="background-grey">
+            <div class="container">
+                <div class="heading-text heading-section text-center m-b-40">
+                    <h2 class="m-b-0">OUR BLOG</h2>
+                    <span class="lead">We do blogging sometimes!</span>
+                </div>
+                <div id="blog">
+
+                    <!-- Blog post-->
+                    <div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
+
+                        <!-- Post item-->
+                        <div class="post-item border">
+                            <div class="post-item-wrap">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img alt="" src="https://picsum.photos/216">
+                                    </a>
+                                    <span class="post-meta-category"><a href="">Lifestyle</a></span>
+                                </div>
+                                <div class="post-item-description">
+                                    <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                    <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33
+                                            Comments</a></span>
+                                    <h2><a href="#">Standard post with a single image
+                                        </a></h2>
+                                    <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus
+                                        commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+
+                                    <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end: Post item-->
+
+                        <!-- Post item-->
+                        <div class="post-item border">
+                            <div class="post-item-wrap">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img alt="" src="https://picsum.photos/211">
+                                    </a>
+                                    <span class="post-meta-category"><a href="">Science</a></span>
+                                </div>
+                                <div class="post-item-description">
+                                    <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                    <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33
+                                            Comments</a></span>
+
+                                    <h2><a href="#">Standard post with a single image
+                                        </a></h2>
+                                    <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus
+                                        commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+
+                                    <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end: Post item-->
+
+
+                        <!-- Post item-->
+                        <div class="post-item border">
+                            <div class="post-item-wrap">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img alt="" src="https://picsum.photos/233">
+                                    </a>
+                                    <span class="post-meta-category"><a href="">Science</a></span>
+                                </div>
+                                <div class="post-item-description">
+                                    <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                    <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33
+                                            Comments</a></span>
+
+                                    <h2><a href="#">Standard post with a single image
+                                        </a></h2>
+                                    <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus
+                                        commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+
+                                    <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end: Post item-->
                     </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/2.png"> </a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/3.png"> </a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/4.png"> </a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/5.png"> </a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/6.png"> </a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/7.png"> </a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/8.png"> </a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="images/clients/9.png"> </a>
-                    </div>
+                    <!-- end: Blog post-->
                 </div>
             </div>
-        </section> -->
-            <!-- end: Client logo -->
+        </section>
+        <!-- end: BLOG -->
 
 
 
-            <!-- Testimonials -->
-            <div class="carousel arrows-visibile testimonial testimonial-single" data-items="1" data-loop="true"
-                data-autoplay="true" data-autoplay="3500" data-arrows="false">
 
-                <!-- Testimonials item -->
-                <div class="testimonial-item">
-                    <img src="https://picsum.photos/201" alt="">
-                    <p>Polo is by far the most amazing template out there! I literally could not be happier that I chose
-                        to
-                        buy this template!</p>
-                    <span>Alan Monre</span>
-                    <span>CEO, Square Software</span>
+        <!-- Call to action -->
+        <section id="join-us" class="background-colored text-center dark-section">
+            <div class="container text-light">
+                <div class="col-lg-9 center">
+                    <h2>Join Us</h2>
+                    <h3 class="">Just because we are in Lebanon, we feel the pain of the random
+                        electrecity outage </h3>
+                    <p class="h5">Regardless of what power resources you are using, you may feel the
+                        pain:
+                    </p>
+                    <a type="button" class="btn btn-light btn-rounded m-t-10">Join Us Now</a>
                 </div>
-                <!-- end: Testimonials item-->
-
-                <!-- Testimonials item -->
-                <div class="testimonial-item">
-                    <img src="https://picsum.photos/215" alt="">
-                    <p>Polo is by far the most amazing template out there! I literally could not be happier that I chose
-                        to
-                        buy this template!</p>
-                    <span>Alan Monre</span>
-                    <span>CEO, Square Software</span>
-                </div>
-                <!-- end: Testimonials item-->
-
-                <!-- Testimonials item -->
-                <div class="testimonial-item">
-                    <img src="https://picsum.photos/203" alt="">
-                    <p>The world is a dangerous place to live; not because of the people who are evil, but because of
-                        the
-                        people who don't do anything about it.</p>
-                    <span>Alan Monre</span>
-                    <span>CEO, Square Software</span>
-                </div>
-                <!-- end: Testimonials item-->
-
             </div>
-            <!-- end: Testimonials -->
+        </section>
+        <!-- end: Call to action -->
 
-            <!-- BLOG -->
-            <section id="section4" class="background-grey">
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-content">
                 <div class="container">
-                    <div class="heading-text heading-section text-center m-b-40">
-                        <h2 class="m-b-0">OUR BLOG</h2>
-                        <span class="lead">We do blogging sometimes!</span>
-                    </div>
-                    <div id="blog">
-
-                        <!-- Blog post-->
-                        <div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
-
-                            <!-- Post item-->
-                            <div class="post-item border">
-                                <div class="post-item-wrap">
-                                    <div class="post-image">
-                                        <a href="#">
-                                            <img alt="" src="https://picsum.photos/216">
-                                        </a>
-                                        <span class="post-meta-category"><a href="">Lifestyle</a></span>
-                                    </div>
-                                    <div class="post-item-description">
-                                        <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                                        <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33
-                                                Comments</a></span>
-                                        <h2><a href="#">Standard post with a single image
-                                            </a></h2>
-                                        <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus
-                                            commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-
-                                        <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end: Post item-->
-
-                            <!-- Post item-->
-                            <div class="post-item border">
-                                <div class="post-item-wrap">
-                                    <div class="post-image">
-                                        <a href="#">
-                                            <img alt="" src="https://picsum.photos/211">
-                                        </a>
-                                        <span class="post-meta-category"><a href="">Science</a></span>
-                                    </div>
-                                    <div class="post-item-description">
-                                        <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                                        <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33
-                                                Comments</a></span>
-
-                                        <h2><a href="#">Standard post with a single image
-                                            </a></h2>
-                                        <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus
-                                            commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-
-                                        <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end: Post item-->
-
-
-                            <!-- Post item-->
-                            <div class="post-item border">
-                                <div class="post-item-wrap">
-                                    <div class="post-image">
-                                        <a href="#">
-                                            <img alt="" src="https://picsum.photos/233">
-                                        </a>
-                                        <span class="post-meta-category"><a href="">Science</a></span>
-                                    </div>
-                                    <div class="post-item-description">
-                                        <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                                        <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33
-                                                Comments</a></span>
-
-                                        <h2><a href="#">Standard post with a single image
-                                            </a></h2>
-                                        <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus
-                                            commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
-
-                                        <a href="#" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end: Post item-->
-                        </div>
-                        <!-- end: Blog post-->
-                    </div>
-                </div>
-            </section>
-            <!-- end: BLOG -->
-
-
-
-
-            <!-- Call to action -->
-            <section id="join-us" class="background-colored text-center dark-section">
-                <div class="container text-light">
-                    <div class="col-lg-9 center">
-                        <h2>Join Us</h2>
-                        <h3 class="">Just because we are in Lebanon, we feel the pain of the random
-                            electrecity outage </h3>
-                        <p class="h5">Regardless of what power resources you are using, you may feel the
-                            pain:
-                        </p>
-                        <a type="button" class="btn btn-light btn-rounded m-t-10">Join Us Now</a>
-                    </div>
-                </div>
-            </section>
-            <!-- end: Call to action -->
-
-            <!-- Footer -->
-            <footer id="footer">
-                <div class="footer-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="widget">
-                                    <div class="widget-title">ejet elkahraba</div>
-                                    <p class="mb-5">Made with ❤️ in Lebanon.<br>
-                                        All rights reserved. Copyright ©2023.</p>
-                                    <!-- <a href="https://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923"
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="widget">
+                                <div class="widget-title">ejet elkahraba</div>
+                                <p class="mb-5">Made with ❤️ in Lebanon.<br>
+                                    All rights reserved. Copyright ©2023.</p>
+                                <!-- <a href="https://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923"
                                     class="btn btn-inverted" target="_blank">Purchase Now</a> -->
-                                </div>
                             </div>
-                            <div class="col-lg-7">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="widget">
-                                            <div class="widget-title">Discover</div>
-                                            <ul class="list">
-                                                <li><a href="#">Features</a></li>
-                                                <li><a href="#">Layouts</a></li>
-                                                <li><a href="#">Corporate</a></li>
-                                            </ul>
-                                        </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="widget">
+                                        <div class="widget-title">Discover</div>
+                                        <ul class="list">
+                                            <li><a href="#">Features</a></li>
+                                            <li><a href="#">Layouts</a></li>
+                                            <li><a href="#">Corporate</a></li>
+                                        </ul>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="widget">
-                                            <div class="widget-title">Features</div>
-                                            <ul class="list">
-                                                <li><a href="#">Layouts</a></li>
-                                                <li><a href="#">Headers</a></li>
-                                                <li><a href="#">Widgets</a></li>
-                                            </ul>
-                                        </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="widget">
+                                        <div class="widget-title">Features</div>
+                                        <ul class="list">
+                                            <li><a href="#">Layouts</a></li>
+                                            <li><a href="#">Headers</a></li>
+                                            <li><a href="#">Widgets</a></li>
+                                        </ul>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="widget">
-                                            <div class="widget-title">Pages</div>
-                                            <ul class="list">
-                                                <li><a href="#">Portfolio</a></li>
-                                                <li><a href="#">Blog</a></li>
-                                                <li><a href="#">Shop</a></li>
-                                            </ul>
-                                        </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="widget">
+                                        <div class="widget-title">Pages</div>
+                                        <ul class="list">
+                                            <li><a href="#">Portfolio</a></li>
+                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="#">Shop</a></li>
+                                        </ul>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="widget">
-                                            <div class="widget-title">Support</div>
-                                            <ul class="list">
-                                                <li><a href="#">Help Desk</a></li>
-                                                <li><a href="#">Documentation</a></li>
-                                                <li><a href="#">Contact Us</a></li>
-                                            </ul>
-                                        </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="widget">
+                                        <div class="widget-title">Support</div>
+                                        <ul class="list">
+                                            <li><a href="#">Help Desk</a></li>
+                                            <li><a href="#">Documentation</a></li>
+                                            <li><a href="#">Contact Us</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="copyright-content">
-                    <div class="container">
-                        <div class="copyright-text text-center">&copy; 2023 Ejet elkahraba - never be in the dark
-                            again...
-                            All Rights Reserved.<a href="//www.inspiro-media.com" target="_blank" rel="noopener">
-                                INSPIRO</a> </div>
-                    </div>
+            </div>
+            <div class="copyright-content">
+                <div class="container">
+                    <div class="copyright-text text-center">&copy; 2023 Ejet elkahraba - never be in the dark
+                        again...
+                        All Rights Reserved.<a href="//www.inspiro-media.com" target="_blank" rel="noopener">
+                            INSPIRO</a> </div>
                 </div>
-            </footer>
-            <!-- end: Footer -->
+            </div>
+        </footer>
+        <!-- end: Footer -->
     </div>
     <!-- end: Body Inner -->
     <!-- Scroll top -->
@@ -1066,6 +882,8 @@
     <script src="js/plugins.js"></script>
     <!--Template functions-->
     <script src="js/functions.js"></script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib -->
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
     <script>
         document.addEventListener('scroll', () => {
             const header = document.querySelector(".header-inner");
@@ -1075,6 +893,9 @@
                 header.classList.remove("scrolled")
             }
         })
+    </script>
+    <script>
+        particlesJS("particles-js", { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "image", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "data:image/jpeg;base64,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", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 15.782952832645451, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": false }); var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function () { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
     </script>
 </body>
 
