@@ -7,6 +7,11 @@
     --dark-grey: #2e2e2c;
 }
 
+::selection {
+    color: var(--dark-grey);
+    background: var(--light-yellow); 
+  }
+
 html {
     scroll-behavior: smooth;
 }
@@ -18,8 +23,32 @@ html {
     /* font-family: 'Antonio', sans-serif; */
 }
 
+body::after {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2e2e2c8e;
+    z-index: 99;
+    opacity: 0.5
+}
+
 p, button, a {
     font-family: 'Antonio', sans-serif;
+}
+
+a {
+    transition: all 0.1s ease-in-out;
+}
+
+footer a:hover {
+    color: var(--dark-yellow) !important;
+    transition: all 0.1s ease-in-out;
+}
+
+#dotsMenu ul li.current {
+    background-color: var(--dark-yellow) !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,12 +59,31 @@ ul {
     list-style-type: none !important;
 }
 
+.lh-sm {
+    line-height: 1.5 !important;
+}
+
+.icon-box {
+    box-shadow: 8px 8px 8px rgba(255, 255, 255, 0.123);
+    transition: all 0.2s ease-in-out;
+}
+
+.icon-box:hover {
+    box-shadow: 14px 14px 12px rgba(253, 253, 253, 0.123);
+    transition: all 0.2s ease-in-out;
+    /* margin-top: -10px !important; */
+}
+
+.border-left {
+    border-left: 1px solid var(--dark-grey) !important;
+}
+
 .header-inner {
     background-color: var(--dark-grey) !important;
 }
 
 .scrolled {
-    background-color: var(--dark-yellow) !important;
+    background-color: var(--light-yellow) !important;
 }
 
 .scrolled a {
@@ -52,20 +100,64 @@ ul {
 }
 
 nav a {
-    color: var(--dark-yellow) !important;
+    color: var(--light-yellow) !important;
 }
 
 nav a:hover {
+    /* color: var(--light-yellow) !important; */
     color: #fff !important;
-    /* border-bottom: solid 1px var(--dark-yellow) !important; */
+    border-bottom: 1px solid var(--light-yellow) !important;
+    border-radius: 15px;
 }
 
 nav .button {
     padding: 8px !important;
-    background-color: var(--dark-yellow);
+    background-color: var(--light-yellow);
     color: var(--dark-grey) !important;
     border-radius: 8px !important;
-    margin-left: 5px;
+    border: 1px solid var(--dark-grey) !important;
+    margin-left: 10px;
+}
+
+nav .button:hover {
+    color: var(--dark-yellow);
+    border: 1px solid #fff !important;
+    background-color: var(--dark-grey) !important;
+    transition: all 0.2s ease-in-out;
+}
+
+footer img {
+    padding: 20px;
+}
+
+footer li {
+    padding: 10px;
+    margin: 10px;
+    font-size: large;
+}
+
+footer nav {
+    margin-left: auto;
+}
+
+footer nav a {
+    padding: 10px;
+}
+
+footer nav a:hover {
+    /* background-color: #ffd976; */
+}
+
+footer svg:hover {
+    /* fill: var(--dark-yellow) !important; */
+    background-color: var(--light-yellow);
+    border-radius: 10px;
+}
+
+.dark-background {
+    background-color: var(--dark-grey);
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #dotsMenu {
@@ -73,7 +165,8 @@ nav .button {
 }
 
 #dotsMenu a:hover {
-    background-color: var(--dark-yellow) !important;
+    color: var(--dark-yellow) !important;
+    transition: 0.2s all ease-in-out !important;
 }
 /* 
 #dotsMenu a {
@@ -87,10 +180,6 @@ nav .button {
 
 #dotsMenu span {
     font-size: 1.5em !important;
-}
-
-.logo-white {
-    fill: #ffffff !important;
 }
 
 #scroll-down {
@@ -108,6 +197,53 @@ nav .button {
     padding: 5px;
     border-radius: 10px;
 }
+
+/* text effects under the word "Real Time" */
+
+.underlined {
+/*   background: red; */
+    position: relative;
+}
+
+.underline-mask:after {
+    content: '';
+    position: absolute;
+    top: 95%;
+    width: 150%;
+    aspect-ratio: 3 / 1;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 50%;
+    border: 6px solid #fff;
+    /* Use a conic gradient mask to hide and show the bits you want */
+    --spread: 140deg;
+    --start: 290deg;
+    mask: conic-gradient(from var(--start), white 0 var(--spread), transparent var(--spread));
+}
+
+/* custom light yellow shape divider */
+
+.light-yellow-bottom-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.light-yellow-bottom-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 133px;
+}
+
+.light-yellow-bottom-divider .shape-fill {
+    fill: #FFD976;
+}
+
 
 #phone {
     /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1), 0 6px 200px rgba(0, 0, 0, 0.1); */
@@ -159,19 +295,149 @@ nav .button {
     /* margin: 10% !important; */
 }
 
-.yellow-section {
+.post-item-wrap {
+    margin-top: 25px;
+    transition: all 0.5s ease-in-out;
+}
+
+.post-item-wrap:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.123);
+    transition: all 0.5s ease-in-out;
+    margin-top: -1px !important;
+}
+
+.dark-yellow-section {
     background-color: var(--dark-yellow) !important;
+}
+
+.light-yellow-section {
+    background-color: var(--light-yellow) !important;
+    color: var(--dark-grey) !important;
 }
 
 .dark-section {
     background-color: var(--dark-grey) !important;
+    /* color: #fff !important; */
 }
 
 .dark-text {
     color: var(--dark-grey) !important;
 }
 
+.dark-yellow-text {
+    color: var(--dark-yellow) !important;
+}
+
+a.dark-btn:hover {
+    background-color: var(--dark-yellow) !important;
+    border: solid 1px var(--light-yellow) !important;
+}
+
 .dark-btn {
-    background-color: var(--dark-grey) !important;
+    background-color: var(--light-yellow) !important;
     border: 1px solid var(--dark-grey) !important;
+    color: var(--dark-grey) !important;
+    transition: all 0.5s ease-in-out;
+}
+
+.dark-btn:hover {
+    /* color: var(--dark-grey) !important; */
+    color: #fff !important;
+    border-color: #fff !important;
+    background-color: 1px solid var(--dark-yellow) !important;
+    transition: 0.5s all ease-in-out;
+}
+
+.light-btn {
+    background-color: var(--dark-yellow) !important;
+    border: 1px solid var(--light-yellow) !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    border-radius: 8px;
+}
+
+.light-btn:hover {
+    background-color: var(--light-yellow) !important;
+    border: 1px solid var(--dark-yellow) !important;
+}
+
+.qr-section p{
+    max-width: 500px;
+}
+
+.qr-section * {
+    /* padding: 500px !important; */
+    /* margin-right: 50px; */
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+    margin-right: 600px;
+    border-radius: 10px;
+}
+
+.fs-2 {
+    font-size: 1.5rem;
+}
+
+
+/* wizard selected step color */
+.wizard > .steps ul li.current a, .wizard > .steps ul li.current a:hover, .wizard > .steps ul li.current a:active {
+    background-color: var(--dark-grey) !important;
+}
+
+.wizard > .steps ul li.current a:hover, .wizard > .steps ul li.current a:hover, .wizard > .steps ul li a:hover {
+    background-color: var(--dark-yellow) !important;
+}
+
+/* wizrd button color */
+button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) {
+    background-color: var(--dark-grey) !important;
+    color: #fff !important;
+    border: none !important;
+    /* border-color: var(--light-yellow) !important; */
+}
+
+/* button.btn:hover, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) {
+    background-color: var(--light-yellow) !important;
+    border: var(--dark-grey) !important;
+} */
+
+/* TIMELINE STEP COLOR */
+.timeline .timeline-item .timeline-icon {
+    background-color: var(--dark-grey) !important;
+}
+
+/* SCROLL UP ARROW  */
+#scrollTop i {
+    background-color: var(--dark-grey) !important;
+}
+
+#scrollTop .fa-arrow-up {
+    background-color: var(--dark-grey) !important;
+}
+
+#scrollTop .fa-arrow-up:hover {
+    background-color: var(--dark-yellow) !important;
+}
+
+#scrollTop i:hover {
+    background-color: var(--dark-yellow) !important;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1200px) {
+
+    .qr-code {
+        margin-right: 0px !important;
+    }
+
 }
