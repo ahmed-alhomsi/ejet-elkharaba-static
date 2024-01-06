@@ -363,6 +363,10 @@ a.dark-btn:hover {
     border: 1px solid var(--dark-yellow) !important;
 }
 
+.fs-2 {
+    font-size: 1.5rem;
+}
+
 .qr-section p{
     max-width: 500px;
 }
@@ -380,10 +384,35 @@ a.dark-btn:hover {
     border-radius: 10px;
 }
 
-.fs-2 {
-    font-size: 1.5rem;
+.testimonial-item {
+    /* padding-bottom: 500px !important; */
+    border-radius: 15px !important;
+
+    margin-top: -84px;
 }
 
+.testimonial-item img {
+    border: solid 5px var(--dark-grey) !important;
+    margin-top: 100px !important;
+}
+
+/* testemonial styling */
+.testimonial-box {
+    max-height: 365px;
+    --s: 50px; /* the size on the corner */
+    --t: 5px;  /* the thickness of the border */
+    --g: 3px; /* the gap between the border and image */
+    
+    padding: calc(var(--g) + var(--t));
+    outline: var(--t) solid #2e2e2c; /* the color here */
+    outline-offset: calc(-1*var(--t));
+    -webkit-mask:
+        conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+        0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+        linear-gradient(#000 0 0) content-box;
+    transition: .4s;
+    border-radius: 15px;
+}
 
 /* wizard selected step color */
 .wizard > .steps ul li.current a, .wizard > .steps ul li.current a:hover, .wizard > .steps ul li.current a:active {
@@ -429,10 +458,51 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     background-color: var(--dark-yellow) !important;
 }
 
+#contact-whatsapp {
+    position: fixed;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    bottom: 15px;
+    right: 15px;
+    z-index: 9999;
+}
 
+/* gradient */
+.testemonials-gradient {
+    
+    background: hsla(43, 100%, 73%, 1);
 
+    background: linear-gradient(-95deg, hsla(43, 100%, 73%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
+    
+    background: -moz-linear-gradient(-95deg, hsla(43, 100%, 73%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
+    
+    background: -webkit-linear-gradient(-95deg, hsla(43, 100%, 73%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFD976", endColorstr="#FFFFFF", GradientType=1 );
+}
 
+/* END OF LANDING PAGE SHAPE DIVIDER */
+.end-of-page-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
 
+.end-of-page-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.end-of-page-divider .shape-fill {
+    fill: #2E2E2E;
+}
 
 @media only screen and (max-width: 1200px) {
 
