@@ -5,6 +5,7 @@
     --light-yellow: #ffd976;
     --dark-yellow: #fcd108;
     --dark-grey: #2e2e2c;
+    --border-radius: 15px;
 }
 
 ::selection {
@@ -63,9 +64,14 @@ ul {
     line-height: 1.5 !important;
 }
 
+.seperator::before, .seperator::after, .separator::before, .separator::after {
+    border-bottom: solid 1px var(--dark-grey) !important;
+}
+
 .icon-box {
     box-shadow: 8px 8px 8px rgba(255, 255, 255, 0.123);
     transition: all 0.2s ease-in-out;
+    border-radius: var(--border-radius) !important;
 }
 
 .icon-box:hover {
@@ -107,14 +113,14 @@ nav a:hover {
     /* color: var(--light-yellow) !important; */
     color: #fff !important;
     border-bottom: 1px solid var(--light-yellow) !important;
-    border-radius: 15px;
+    border-radius: var(--border-radius);
 }
 
 nav .button {
     padding: 8px !important;
     background-color: var(--light-yellow);
     color: var(--dark-grey) !important;
-    border-radius: 8px !important;
+    border-radius: var(--border-radius) !important;
     border: 1px solid var(--dark-grey) !important;
     margin-left: 10px;
 }
@@ -151,7 +157,7 @@ footer nav a:hover {
 footer svg:hover {
     /* fill: var(--dark-yellow) !important; */
     background-color: var(--light-yellow);
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 
 .dark-background {
@@ -195,7 +201,7 @@ footer svg:hover {
     font-family: 'Dancing Script', cursive;
     background-color: var(--light-yellow);
     padding: 5px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 
 /* text effects under the word "Real Time" */
@@ -263,7 +269,7 @@ footer svg:hover {
 } */
 
 .person {
-    border-radius: 10px !important;
+    border-radius: var(--border-radius) !important;
     position: relative;
     /* padding: 20px; */
 }
@@ -271,7 +277,7 @@ footer svg:hover {
 .person img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 
 .person p {
@@ -381,12 +387,12 @@ a.dark-btn:hover {
     height: 150px;
     margin-top: 20px;
     margin-right: 600px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 
 .testimonial-item {
     /* padding-bottom: 500px !important; */
-    border-radius: 15px !important;
+    border-radius: var(--border-radius) !important;
 
     margin-top: -84px;
 }
@@ -411,7 +417,7 @@ a.dark-btn:hover {
         0 0/calc(100% - var(--s)) calc(100% - var(--s)),
         linear-gradient(#000 0 0) content-box;
     transition: .4s;
-    border-radius: 15px;
+    border-radius: var(--border-radius);
 }
 
 /* wizard selected step color */
