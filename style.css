@@ -11,7 +11,23 @@
 ::selection {
     color: var(--dark-grey);
     background: var(--light-yellow); 
-  }
+}
+
+.ml-md-100 {
+    margin-left: 200px;
+}
+
+.mr-md-100 {
+    margin-right: 200px;
+}
+
+.pr-md-100 {
+    padding-right: 200px;
+}
+
+.pl-md-100 {
+    padding-right: 200px;
+}
 
 html {
     scroll-behavior: smooth;
@@ -122,7 +138,7 @@ nav .button {
     color: var(--dark-grey) !important;
     border-radius: var(--border-radius) !important;
     border: 1px solid var(--dark-grey) !important;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
 nav .button:hover {
@@ -143,7 +159,7 @@ footer li {
 }
 
 footer nav {
-    margin-left: auto;
+    /* margin-left: auto; */
 }
 
 footer nav a {
@@ -386,8 +402,12 @@ a.dark-btn:hover {
     width: 150px;
     height: 150px;
     margin-top: 20px;
-    margin-right: 600px;
+    /* margin-right: 600px; */
     border-radius: var(--border-radius);
+}
+
+.qr-image {
+    margin-left: 250px;
 }
 
 .testimonial-item {
@@ -516,4 +536,28 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
         margin-right: 0px !important;
     }
 
+    #contact-whatsapp {
+        max-width: 70px;
+        max-height: 70px;
+    }
+
+    .qr-image {
+        margin-left: 0px;
+    }
+
+    .ml-md-100 {
+        margin-left: 0px;
+    }
+
+    .mr-md-100 {
+        margin-right: 0px;
+    }
+
+    .pr-md-100 {
+        padding-right: 0px;
+    }
+
+    .pl-md-100 {
+        padding-right: 0px;
+    }
 }
