@@ -8,10 +8,10 @@
     --border-radius: 15px;
 }
 
-::selection {
+/* ::selection {
     color: var(--dark-grey);
     background: var(--light-yellow); 
-}
+} */
 
 .ml-md-100 {
     margin-left: 200px;
@@ -59,10 +59,10 @@ a {
     transition: all 0.1s ease-in-out;
 }
 
-footer a:hover {
+/* footer a:hover {
     color: var(--dark-yellow) !important;
     transition: all 0.1s ease-in-out;
-}
+} */
 
 #dotsMenu ul li.current {
     background-color: var(--dark-yellow) !important;
@@ -80,19 +80,34 @@ ul {
     line-height: 1.5 !important;
 }
 
+/* list of checks */
+
+.list-icon-check li {
+    transition: all 0.5s ease-in-out;
+}
+
+.list-icon-check li:hover {
+    margin-left: 30px !important;
+    transition: all 0.5s ease-in-out;
+}
+
 .seperator::before, .seperator::after, .separator::before, .separator::after {
     border-bottom: solid 1px var(--dark-grey) !important;
 }
 
 .icon-box {
-    box-shadow: 8px 8px 8px rgba(255, 255, 255, 0.123);
-    transition: all 0.2s ease-in-out;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease-in-out;
     border-radius: var(--border-radius) !important;
+    border: none !important;
 }
 
 .icon-box:hover {
-    box-shadow: 14px 14px 12px rgba(253, 253, 253, 0.123);
-    transition: all 0.2s ease-in-out;
+    margin-top: -10px !important;
+    background-color: var(--light-yellow) !important;
+    border: none !important;
+    box-shadow: 14px 14px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease-in-out;
     /* margin-top: -10px !important; */
 }
 
@@ -129,14 +144,14 @@ nav a:hover {
     /* color: var(--light-yellow) !important; */
     color: #fff !important;
     border-bottom: 1px solid var(--light-yellow) !important;
-    border-radius: var(--border-radius);
+    border-radius: 10px;
 }
 
 nav .button {
     padding: 8px !important;
     background-color: var(--light-yellow);
     color: var(--dark-grey) !important;
-    border-radius: var(--border-radius) !important;
+    border-radius: 5px !important;
     border: 1px solid var(--dark-grey) !important;
     /* margin-left: 10px; */
 }
@@ -146,6 +161,12 @@ nav .button:hover {
     border: 1px solid #fff !important;
     background-color: var(--dark-grey) !important;
     transition: all 0.2s ease-in-out;
+}
+
+.bg-cover {
+    margin-top: -100px;
+    right: 0;
+    transform: scaleX(200%);
 }
 
 footer img {
@@ -170,11 +191,10 @@ footer nav a:hover {
     /* background-color: #ffd976; */
 }
 
-footer svg:hover {
-    /* fill: var(--dark-yellow) !important; */
+/* footer svg:hover {
     background-color: var(--light-yellow);
     border-radius: var(--border-radius);
-}
+} */
 
 .dark-background {
     background-color: var(--dark-grey);
@@ -215,7 +235,7 @@ footer svg:hover {
 
 .realtime {
     font-family: 'Dancing Script', cursive;
-    background-color: var(--light-yellow);
+    /* background-color: var(--light-yellow); */
     padding: 5px;
     border-radius: var(--border-radius);
 }
@@ -351,27 +371,35 @@ footer svg:hover {
 }
 
 a.dark-btn:hover {
-    background-color: var(--dark-yellow) !important;
+    background-color: #fff !important;
     border: solid 1px var(--light-yellow) !important;
+    color: #fff !important;
+}
+
+a:hover.dark-btn:hover {
+    background-color: #fff !important;
+    /* border: solid 1px var(--dark-yellow) !important; */
+    color: #000 !important;
 }
 
 .dark-btn {
-    background-color: var(--light-yellow) !important;
+    color: #fff !important;
+    background-color: var(--dark-grey) !important;
     border: 1px solid var(--dark-grey) !important;
-    color: var(--dark-grey) !important;
     transition: all 0.5s ease-in-out;
 }
 
 .dark-btn:hover {
     /* color: var(--dark-grey) !important; */
-    color: #fff !important;
+    color: var(--dark-grey) !important;
     border-color: #fff !important;
-    background-color: 1px solid var(--dark-yellow) !important;
+    background-color: #fff !important;
     transition: 0.5s all ease-in-out;
+
 }
 
 .light-btn {
-    background-color: var(--dark-yellow) !important;
+    background-color: var(--light-yellow) !important;
     border: 1px solid var(--light-yellow) !important;
     padding-left: 15px;
     padding-right: 15px;
@@ -414,7 +442,7 @@ a.dark-btn:hover {
     /* padding-bottom: 500px !important; */
     border-radius: var(--border-radius) !important;
 
-    margin-top: -84px;
+    /* margin-top: -84px; */
 }
 
 .testimonial-item img {
@@ -423,14 +451,14 @@ a.dark-btn:hover {
 }
 
 /* testemonial styling */
-.testimonial-box {
+/* .testimonial-box {
     max-height: 365px;
-    --s: 50px; /* the size on the corner */
-    --t: 5px;  /* the thickness of the border */
-    --g: 3px; /* the gap between the border and image */
+    --s: 50px;
+    --t: 5px;
+    --g: 3px;
     
     padding: calc(var(--g) + var(--t));
-    outline: var(--t) solid #2e2e2c; /* the color here */
+    outline: var(--t) solid #2e2e2c;
     outline-offset: calc(-1*var(--t));
     -webkit-mask:
         conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
@@ -438,6 +466,33 @@ a.dark-btn:hover {
         linear-gradient(#000 0 0) content-box;
     transition: .4s;
     border-radius: var(--border-radius);
+} */
+
+/* .testimonial-box {
+    z-index: 1 !important;
+}
+
+.testimonial-box::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    border-top-left-radius: 8px;
+    background-color: #2e2e2c;
+    z-index: -1 !important;
+} */
+
+.testimonial-box, .testimonial-box, .testimonial-item {
+    border-top-left-radius: 50px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 50px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.testimonial-box {
+    border-bottom-right-radius: 5000px !important;
 }
 
 /* wizard selected step color */
@@ -454,8 +509,15 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     background-color: var(--dark-grey) !important;
     color: #fff !important;
     border: none !important;
-    /* border-color: var(--light-yellow) !important; */
 }
+
+/* not all buttons should change to yellow... (button should be light yellow) */
+
+/* #donate > button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) {
+    background-color: var(--light-yellow) !important;
+    color: #fff !important;
+    border: none !important;
+} */
 
 /* button.btn:hover, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) {
     background-color: var(--light-yellow) !important;
@@ -484,14 +546,24 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     background-color: var(--dark-yellow) !important;
 }
 
-#contact-whatsapp {
+.whatsapp-btn {
     position: fixed;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 5px;
+    /* background-color: #fff; */
+    /* border-radius: 5px; */
+    /* padding: 5px; */
     bottom: 15px;
     right: 15px;
     z-index: 9999;
+
+    font-size: 64px;
+    color: #25d366;
+    /* display: inline-block; */
+    transition: all 400ms;
+}
+
+.whatsapp-btn:hover {
+    position: fixed;
+    color: var(--dark-grey) !important;
 }
 
 /* gradient */
@@ -506,6 +578,12 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     background: -webkit-linear-gradient(-95deg, hsla(43, 100%, 73%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFD976", endColorstr="#FFFFFF", GradientType=1 );
+}
+
+/* the line to seperate between the donate text and image */
+#donate-line {
+    position: absolute;
+    transform: rotateZ(90deg);
 }
 
 /* END OF LANDING PAGE SHAPE DIVIDER */
@@ -560,4 +638,15 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     .pl-md-100 {
         padding-right: 0px;
     }
+}
+
+@media only screen and (max-width: 775px) {
+    #donate-line {
+        display: none;
+    }
+
+    #donate-img {
+        border: 0px !important;
+    }
+
 }
