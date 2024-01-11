@@ -395,7 +395,8 @@ a:hover.dark-btn:hover {
     border-color: #fff !important;
     background-color: #fff !important;
     transition: 0.5s all ease-in-out;
-
+    padding-left: 25px !important;
+    padding-right: 25px !important;
 }
 
 .light-btn {
