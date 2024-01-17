@@ -462,6 +462,10 @@ a:hover.dark-btn:hover {
     padding-right: 25px !important;
 }
 
+.border-bottom-dark {
+    border-bottom: 2px solid var(--dark-grey);
+}
+
 .fs-2 {
     font-size: 1.5rem;
 }
@@ -489,6 +493,15 @@ a:hover.dark-btn:hover {
 
 .qr-image {
     margin-left: 250px;
+}
+
+.wizard img {
+    max-height: 300px;
+}
+
+.ac-active {
+    background-color: var(--light-yellow) !important;
+    color: #fff !important;
 }
 
 .testimonial-item {
@@ -607,15 +620,40 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     bottom: 15px;
     right: 15px;
     z-index: 9999;
-
     font-size: 64px;
     color: #25d366;
-    background-color: #fff;
-    fill: #fff;
+    /* fill: #fff !important; */
     /* border-radius: 50%;
     padding: 0.5px; */
     /* display: inline-block; */
     transition: all 400ms;
+    z-index: 5 !important;
+}
+
+.whatsapp-btn::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    z-index: -1;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50px;
+    max-height: 50px;
+}
+
+.whatsapp-btn::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 46px;
+    z-index: -3;
+    width: 10px;
+    height: 8px;
+    transform: rotate(30deg);
+    background-color: #fff;
+    max-height: 50px;
 }
 
 .whatsapp-btn:hover {
@@ -637,6 +675,10 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFD976", endColorstr="#FFFFFF", GradientType=1 );
 }
 
+#donate {
+    position: relative;
+}
+
 /* the line to seperate between the donate text and image */
 #donate-line {
     transform: scaleX(0.1) scaleY(0.5) rotateZ(90deg) !important;
@@ -647,6 +689,58 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
 /* #donate-img {
     border-left: 2px solid #000;
 } */
+
+/* DONATION DIVIDER */
+.donation-divider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    fill: #fff;
+}
+
+.donation-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+
+.donation-divider .shape-fill {
+    fill: #FFFFFF;
+}
+/* 
+.inverted-donation-divider {
+    position: absolute;
+    transform: rotate(180deg);
+    left: 0;
+    bottom: 0;
+    fill: #fff;
+} */
+
+.inverted-donation-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    fill: #fff;
+}
+
+.inverted-donation-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+
+.inverted-donation-divider .shape-fill {
+    fill: #FFFFFF;
+}
 
 /* END OF LANDING PAGE SHAPE DIVIDER */
 .end-of-page-divider {
