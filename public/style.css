@@ -100,6 +100,7 @@ ul {
     transition: all 0.5s ease-in-out;
     border-radius: var(--border-radius) !important;
     border: none !important;
+    min-height: 350px;
 }
 
 .icon-box:hover {
@@ -111,8 +112,24 @@ ul {
 }
 
 #user-pain .icon-box:hover {
+    margin-top: 20px !important;
+}
 
-    margin-top: 25% !important;
+.client-quote {
+    transition: all 0.5s ease-in-out;
+}
+
+.client-quote:hover {
+    background-color: var(--light-yellow);
+    border-radius: 15px;
+    cursor:help;
+    transition: all 0.5s ease-in-out;
+}
+
+.center-image {
+    /* width: 400px; */
+    /* height: 400px; */
+    margin: 20px;
 }
 
 .border-left {
@@ -504,10 +521,14 @@ a:hover.dark-btn:hover {
     max-height: 300px;
 }
 
-.ac-active {
+.wizard .content {
+    height: 720px !important;
+}
+
+/* .ac-active {
     background-color: var(--light-yellow) !important;
     color: #fff !important;
-}
+} */
 
 .testimonial-item {
     /* padding-bottom: 500px !important; */
@@ -668,8 +689,8 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
 
 /* gradient */
 .testemonials-gradient {
-    
-    background: hsla(43, 100%, 73%, 1);
+    /* make the testemonial item have a gradient from bottom to top */
+    /* background: hsla(43, 100%, 73%, 1);
 
     background: linear-gradient(-95deg, hsla(43, 100%, 73%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
     
@@ -677,7 +698,21 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     
     background: -webkit-linear-gradient(-95deg, hsla(43, 100%, 73%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
     
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFD976", endColorstr="#FFFFFF", GradientType=1 );
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFD976", endColorstr="#FFFFFF", GradientType=1 ); */
+}
+
+.upside-down-quote {
+    position: absolute;
+    left:-5px;
+    top: -20px;
+    z-index: -1;
+}
+
+.normal-quote {
+    position: absolute;
+    right: 0px;
+    bottom: -20px;
+    z-index: -1;
 }
 
 #donate {
@@ -780,6 +815,9 @@ button.btn, .btn:not(.close):not(.mfp-close), a.btn:not([href]):not([tabindex]) 
     visibility: visible;
 }
 
+#contact-us {
+    background-color: rgb(247,247,247) !important;
+}
 
 
 .flip-card {
