@@ -1604,8 +1604,9 @@
 							<div class="form-group text-center">
 								<!-- <button class="btn dark-btn" type="submit" id="form-submit"><i
 										class="fa fa-paper-plane"></i>&nbsp;Send message</button> -->
-								<button data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'
-									class="btn dark-btn m-b-80 g-recaptcha" href="#"><i class="fa fa-paper-plane"></i>
+								<button data-sitekey="6Ld3IlkpAAAAABRKwx0ct21qc5D38oew4AS6g6BE" data-callback='onSubmit'
+									data-action='submit' class="btn dark-btn m-b-80 g-recaptcha" href="#"><i
+										class="fa fa-paper-plane"></i>
 									Send
 									message</button>
 							</div>
@@ -1783,7 +1784,7 @@
 
 	<!-- reCAPTCHA -->
 	<!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
-	<script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+	<script src="https://www.google.com/recaptcha/api.js?render=6Ld3IlkpAAAAAJGrj4XdXCAUC6gFVeIeX_JB6jQP"></script>
 
 
 	<script>
@@ -1792,6 +1793,18 @@
 			document.getElementById("send-message-form").submit();
 		}
 	</script>
+
+	<!-- <script>
+		function onClick(e) {
+			e.preventDefault();
+			grecaptcha.ready(function () {
+				grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+					// Add your logic to submit to your backend server here.
+				});
+			});
+		}
+	</script> -->
+
 
 
 	<!--Plugins-->
