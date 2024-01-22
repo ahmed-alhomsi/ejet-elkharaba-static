@@ -2,11 +2,39 @@
 <html lang="en">
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="INSPIRO" />
-	<meta name="description" content="Themeforest Template Polo, html template">
-	<link rel="icon" type="image/png" href="images/favicon.png">
+	<meta name="author" content="Ejet Elkahraba" />
+	<meta name="language" content="English">
+	<meta name="description"
+		content="Get real-time updates on electricity status to stay informed about power outages and planned restoration times. Control devices like vacuum cleaners and ACs and other devices seamlessly with Ejet Elkahraba, Never be in the dark again..." />
+
+
+	<!-- Social media look of Ejet Elkahraba -->
+	<meta property="og:title" content="Ejet Elkahraba - Never be in the dark again...">
+	<meta property="og:description"
+		content="Get real-time updates on electricity status to stay informed about power outages and planned restoration times. In the future, control devices like vacuum cleaners and ACs seamlessly with Ejet Elkahraba, Never be in the dark again...">
+	<meta property="og:url" content="https://ejet-elkahraba.com/">
+	<meta property="og:image" content="https://ejet-elkahraba.com/images/ejet%20elkahraba%20light%20logo.png">
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<!-- please replace with actual twitter handle -->
+	<meta name="twitter:site" content="@YourTwitterHandle">
+	<meta name="twitter:title" content="Ejet Elkahraba - Never be in the dark again...">
+	<meta name="twitter:description"
+		content="Get real-time updates on electricity status and control devices seamlessly with Ejet Elkahraba, Never be in the dark again...">
+	<meta name="twitter:image" content="https://ejet-elkahraba.com/images/ejet%20elkahraba%20light%20logo.png">
+
+	<!-- <meta name="keywords"
+		content="Electricity, lebanon, Ejet Elkahraba, landing page, grid electricity, grid powerlines lebanon."> -->
+
+	<meta name="keywords"
+		content="Electricity, Lebanon, Ejet Elkahraba, Landing Page, Grid Electricity, Power Outages, Electric Grid Lebanon, Real-time Updates, Planned Restoration Times, Device Control, Smart Grid, Energy Monitoring, Grid Connectivity, وضع الكهرباء في منطقتي، , Power Grid, Energy Management, Electrical Service, Grid Reliability, Electric Power Notification">
+
+
+
+	<link rel="icon" type="image/png" href="./images/ejet elkahraba light logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Document title -->
 	<title>Ejet Elkahraba</title>
@@ -888,7 +916,7 @@
 						</h3> -->
 						<div class="card-body">
 							<!--Wizard 7-->
-							<form data-animate="fadeInRight" data-animate-delay="300" id="wizard7"
+							<form id="join-us-form" data-animate="fadeInRight" data-animate-delay="300" id="wizard7"
 								class="wizard needs-validation" data-style="1" novalidate>
 								<!--Step 1-->
 								<h3>Join Our Community</h3>
@@ -1021,6 +1049,9 @@
 									</div>
 								</div>
 								<!--end: Step 4-->
+
+
+
 							</form>
 							<!--end: Wizard 7-->
 						</div>
@@ -1548,8 +1579,8 @@
 						</div>
 					</div>
 					<div class="col-lg-5 offset-1">
-						<form class="widget-contact-form" novalidate="" action="include/contact-form.php" role="form"
-							method="post">
+						<form id="send-message-form" class="widget-contact-form" novalidate=""
+							action="include/contact-form.php" role="form" method="post">
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="name">Name</label>
@@ -1573,7 +1604,8 @@
 							<div class="form-group text-center">
 								<!-- <button class="btn dark-btn" type="submit" id="form-submit"><i
 										class="fa fa-paper-plane"></i>&nbsp;Send message</button> -->
-								<button class="btn dark-btn m-b-80" href="#"><i class="fa fa-paper-plane"></i>
+								<button data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'
+									class="btn dark-btn m-b-80 g-recaptcha" href="#"><i class="fa fa-paper-plane"></i>
 									Send
 									message</button>
 							</div>
@@ -1746,6 +1778,20 @@
 	<!-- <script src="js/plugins.js"></script> -->
 	<!--Template functions-->
 	<!-- <script src="js/functions.js"></script> -->
+
+
+
+	<!-- reCAPTCHA -->
+	<!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
+	<script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+
+
+	<script>
+		function onSubmit(token) {
+			// document.getElementById("join-us-form").submit();
+			document.getElementById("send-message-form").submit();
+		}
+	</script>
 
 
 	<!--Plugins-->
