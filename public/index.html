@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5HF2Q0CJXC"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-5HF2Q0CJXC');
+	</script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="Ejet Elkahraba" />
@@ -90,16 +101,6 @@
 	<link href="css/plugins.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5HF2Q0CJXC"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-5HF2Q0CJXC');
-	</script>
 
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -914,11 +915,12 @@
 				<div class="col-lg-7 m-l-20 m-r-20 text-center">
 					<!-- class="card" -->
 					<div>
+						<!-- <h3 class="p-20" data-animate="fadeInUp" data-animate-delay="600">Join our Community
+						</h3> -->
 						<div class="card-body">
 							<!--Wizard 7-->
-							<form action="?" method="POST" id="join-us-form" data-animate="fadeInRight"
-								data-animate-delay="300" id="wizard7" class="wizard needs-validation" data-style="1"
-								novalidate>
+							<form data-animate="fadeInRight" data-animate-delay="300" id="wizard7"
+								class="wizard needs-validation" data-style="1" novalidate>
 								<!--Step 1-->
 								<h3>Join Our Community</h3>
 								<div class="wizard-content">
@@ -930,9 +932,44 @@
 									<button id="locationBtn" class="btn button dark-btn"><i
 											class="fa fa-location-arrow m-r-10"></i>Enable
 										Location</button>
+									<!-- <div class="form-row">
+										<div class="form-group col-md-6">
+											<label for="username">Username</label>
+											<input type="text" class="form-control" name="username"
+												placeholder="Enter username" required>
+										</div>
+										<div class="form-group col-md-6">
+											<label for="email">Email address</label>
+											<input type="email" class="form-control" name="email"
+												placeholder="Enter your email">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<label for="password">Password</label>
+											<div class="input-group show-hide-password">
+												<input class="form-control" name="password" placeholder="Enter password"
+													type="password">
+												<div class="input-group-append">
+													<span class="input-group-text"><i class="icon-eye-off"
+															aria-hidden="true" style="cursor: pointer;"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label for="password2">Confirm Password</label>
+											<div class="input-group show-hide-password">
+												<input class="form-control" name="password2"
+													placeholder="Enter password" type="password">
+												<div class="input-group-append">
+													<span class="input-group-text"><i class="icon-eye-off"
+															aria-hidden="true" style="cursor: pointer;"></i></span>
+												</div>
+											</div>
+										</div>
+									</div> -->
 								</div>
 								<!--end: Step 1-->
-
 								<!--Step 2-->
 								<h3>Pick Your Powerline</h3>
 								<div class="wizard-content">
@@ -942,11 +979,9 @@
 									</div>
 									<div id="powerlines">
 
-										<div class="accordion accordion-shadow" onclick="cityClicked(event)">
+										<div class="accordion accordion-shadow" onclick="cityClicked()">
 											<div class="ac-item">
-												<h5 class="ac-title">Beirut
-													<span class="tick-icon">✓</span>
-												</h5>
+												<h5 class="ac-title">Beirut</h5>
 												<div class="ac-content" style="display: none;">
 													<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia
 														accusamus nobis blanditiis aliquam velit repellendus facilis
@@ -960,9 +995,7 @@
 
 											</div>
 											<div class="ac-item">
-												<h5 class="ac-title">bab-mosala
-													<span class="tick-icon">✓</span>
-												</h5>
+												<h5 class="ac-title">bab-mosala</h5>
 												<div class="ac-content" style="display: none;">
 													<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
 														Quibusdam repudiandae eum perferendis sit laborum eligendi
@@ -976,9 +1009,7 @@
 
 											</div>
 											<div class="ac-item">
-												<h5 class="ac-title">Shabaa
-													<span class="tick-icon">✓</span>
-												</h5>
+												<h5 class="ac-title">Shabaa</h5>
 												<div class="ac-content" style="display: none;">
 													<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
 														Accusamus iste ullam harum eius modi aliquam excepturi nihil ut
@@ -1010,12 +1041,11 @@
 												target="_blank">Join the
 												Community</a></button>
 
+										<!-- <a href="https://chat.whatsapp.com/JEpCvJnCIq77x1ZkO0HkoA">https://chat.whatsapp.com/JEpCvJnCIq77x1ZkO0HkoA</a> -->
+
 									</div>
 								</div>
 								<!--end: Step 4-->
-
-
-
 							</form>
 							<!--end: Wizard 7-->
 						</div>
@@ -1542,7 +1572,7 @@
 						</div>
 					</div>
 					<div class="col-lg-5 offset-1">
-						<form action="?" method="POST" id="send-message-form" class="widget-contact-form" novalidate=""
+						<form method="POST" id="send-message-form" class="widget-contact-form" novalidate=""
 							role="form">
 							<div class="row">
 								<div class="form-group col-md-6">
