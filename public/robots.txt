@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /include/
+Disallow: /jquery-steps/
+Disallow: /scss/
+Disallow: /js/
+Disallow: /images/
+Disallow: /css/
+Disallow: /validate/
+Disallow: /webfonts/
+Disallow: style.css
+Disallow: .gitignore
+Disallow: 404.html
